@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions — Agential Skill
 # Place at `.github/copilot-instructions.md`
-# Author: Talha Irfan (codedits)
+# Author: Talha Irfan (talhairfandev)
 
 Apply these rules on every code generation turn:
 

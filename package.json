@@ -17,16 +17,16 @@
     "frontend",
     "web-development"
   ],
-  "author": "Talha Irfan (codedits)",
+  "author": "Talha Irfan (talhairfandev)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codedits/agential-skill.git"
+    "url": "git+https://github.com/talhairfandev/agential-skill.git"
   },
   "bugs": {
-    "url": "https://github.com/codedits/agential-skill/issues"
+    "url": "https://github.com/talhairfandev/agential-skill/issues"
   },
-  "homepage": "https://github.com/codedits/agential-skill#readme",
+  "homepage": "https://github.com/talhairfandev/agential-skill#readme",
   "publishConfig": {
     "access": "public"
   },

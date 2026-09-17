@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Universal Installer for Agential Skill (by Talha Irfan / codedits)
+# Universal Installer for Agential Skill (by Talha Irfan / talhairfandev)
 # Supports local execution and 1-line remote web execution:
-# curl -fsSL https://raw.githubusercontent.com/codedits/agential-skill/main/scripts/install.sh | bash
+# curl -fsSL https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.sh | bash
 
 set -e
 
@@ -9,7 +9,7 @@ TARGET_DIR="${1:-$(pwd)}"
 TARGET_TYPE="${2:-all}"
 
 echo "===================================================="
-echo "  ⚡ Agential Skill Installer (codedits)"
+echo "  ⚡ Agential Skill Installer (talhairfandev)"
 echo "  Universal Web & UI AI Agent Development Skill"
 echo "===================================================="
 echo "Target: $TARGET_DIR"
@@ -32,7 +32,7 @@ fi
 if [ -z "$SOURCE_ROOT" ]; then
   echo "[INFO] Downloading latest Agential Skill bundle from GitHub..."
   TEMP_DIR="$(mktemp -d)"
-  curl -fsSL "https://github.com/codedits/agential-skill/archive/refs/heads/main.tar.gz" | tar -xz -C "$TEMP_DIR"
+  curl -fsSL "https://github.com/talhairfandev/agential-skill/archive/refs/heads/main.tar.gz" | tar -xz -C "$TEMP_DIR"
   SOURCE_ROOT="$TEMP_DIR/agential-skill-main"
   CLEAN_TEMP=true
 fi
@@ -94,7 +94,7 @@ fi
 if [ ! -f "$TARGET_DIR/context.md" ]; then
   cat << 'EOF' > "$TARGET_DIR/context.md"
 # Project Context & AI Memory
-*Maintained by Agential Skill (Talha Irfan / @codedits)*
+*Maintained by Agential Skill (Talha Irfan / @talhairfandev)*
 
 ## 1. Vision & Core Objectives
 - **Purpose**: [Describe this project's purpose]

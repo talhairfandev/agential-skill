@@ -39,13 +39,13 @@ npx agential-skill init -y
 npx agential-skill init
 
 # Direct from GitHub (no npm):
-npx github:codedits/agential-skill init -y
+npx github:talhairfandev/agential-skill init -y
 ```
 
 Or via one-line scripts:
 
-- **Windows (PowerShell):** `irm https://raw.githubusercontent.com/codedits/agential-skill/main/scripts/install.ps1 | iex`
-- **macOS / Linux:** `curl -fsSL https://raw.githubusercontent.com/codedits/agential-skill/main/scripts/install.sh | bash`
+- **Windows (PowerShell):** `irm https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.ps1 | iex`
+- **macOS / Linux:** `curl -fsSL https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.sh | bash`
 
 ---
 
@@ -141,7 +141,7 @@ agential-skill/
 
 ## Author
 
-Created by **Talha Irfan** ([@codedits](https://github.com/codedits)).
+Created by **Talha Irfan** ([@talhairfandev](https://github.com/talhairfandev)).
 
 ## License
 

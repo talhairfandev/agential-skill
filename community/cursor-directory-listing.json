@@ -1,9 +1,9 @@
 {
   "name": "Agential Skill (User-First Web & UI Craftsman)",
-  "author": "Talha Irfan (@codedits)",
+  "author": "Talha Irfan (@talhairfandev)",
   "slug": "agential-skill",
   "tags": ["frontend", "web", "framer-motion", "ui-design", "beginner-friendly", "anti-breakage"],
   "description": "Guides AI agents to ask simple plain-English questions before coding, craft Framer-inspired clean UI, review every file edit to prevent broken imports, and search the web for modern inspirations.",
-  "website": "https://github.com/codedits/agential-skill",
+  "website": "https://github.com/talhairfandev/agential-skill",
   "rules": "adapters/cursor/.cursorrules"
 }

@@ -1,5 +1,5 @@
 # Accessibility & Inclusive Design Standards
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 All interfaces generated under Agential Skill must meet WCAG 2.1 Level AA conformance. Visual elegance must never compromise accessibility.
 

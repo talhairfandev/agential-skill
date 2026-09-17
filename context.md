@@ -1,10 +1,10 @@
 # Project Context: Agential Skill
-*Maintained by Talha Irfan (@codedits)*
+*Maintained by Talha Irfan (@talhairfandev)*
 
 ## 1. Vision
 
 - **Purpose**: A universal, model-agnostic instruction set for AI coding assistants that enforces disciplined frontend development — consistent design system, structured onboarding, incremental delivery, and mandatory review.
-- **Repository**: `https://github.com/codedits/agential-skill`
+- **Repository**: `https://github.com/talhairfandev/agential-skill`
 
 ## 2. Design Standard
 

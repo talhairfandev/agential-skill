@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    Universal Installer for Agential Skill (by Talha Irfan / codedits).
+    Universal Installer for Agential Skill (by Talha Irfan / talhairfandev).
     Supports both local execution and 1-line remote web execution:
-    irm https://raw.githubusercontent.com/codedits/agential-skill/main/scripts/install.ps1 | iex
+    irm https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.ps1 | iex
 #>
 param(
     [string]$TargetDir = (Get-Location).Path,
@@ -13,7 +13,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host "====================================================" -ForegroundColor Cyan
-Write-Host "  ⚡ Agential Skill Installer (codedits)" -ForegroundColor Cyan
+Write-Host "  ⚡ Agential Skill Installer (talhairfandev)" -ForegroundColor Cyan
 Write-Host "  Universal Fullstack AI Agent Development Skill" -ForegroundColor DarkGray
 Write-Host "====================================================" -ForegroundColor Cyan
 Write-Host "Target: $TargetDir" -ForegroundColor Yellow
@@ -40,7 +40,7 @@ if (-not $SourceRoot) {
     $TempZip = Join-Path ([System.IO.Path]::GetTempPath()) "agential-skill-main.zip"
     $TempExtract = Join-Path ([System.IO.Path]::GetTempPath()) "agential-skill-temp"
     
-    Invoke-WebRequest -Uri "https://github.com/codedits/agential-skill/archive/refs/heads/main.zip" -OutFile $TempZip
+    Invoke-WebRequest -Uri "https://github.com/talhairfandev/agential-skill/archive/refs/heads/main.zip" -OutFile $TempZip
     if (Test-Path $TempExtract) { Remove-Item -Recurse -Force $TempExtract }
     Expand-Archive -Path $TempZip -DestinationPath $TempExtract -Force
     $SourceRoot = Join-Path $TempExtract "agential-skill-main"
@@ -112,7 +112,7 @@ $ContextPath = Join-Path $TargetDir "context.md"
 if (-not (Test-Path $ContextPath)) {
     $StarterContext = @"
 # Project Context & AI Memory
-*Maintained by Agential Skill (Talha Irfan / @codedits)*
+*Maintained by Agential Skill (Talha Irfan / @talhairfandev)*
 
 ## 1. Vision & Core Objectives
 - **Purpose**: [Describe this project's purpose]

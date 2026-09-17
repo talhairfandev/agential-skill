@@ -5,7 +5,7 @@ description: >-
 ---
 
 # Agential Skill — Specification
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 A model-agnostic skill that enforces a disciplined five-step workflow for frontend and UI development. Produces clean, consistent, well-reviewed code with a strict visual standard.
 

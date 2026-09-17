@@ -1,6 +1,6 @@
 # Claude Directives — Agential Skill
 # Place at `CLAUDE.md` in your project root or Claude Project Instructions
-# Author: Talha Irfan (codedits)
+# Author: Talha Irfan (talhairfandev)
 
 Follow the five Agential Skill rules on every turn:
 

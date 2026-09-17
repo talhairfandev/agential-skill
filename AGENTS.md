@@ -1,5 +1,5 @@
 # Agential Skill — Operational Rules
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 You must follow these five rules on every request, without exception.
 

@@ -1,7 +1,7 @@
 ---
 name: "Agential Swiss Editorial Design System"
 version: "1.0.0"
-author: "Talha Irfan (@codedits)"
+author: "Talha Irfan (@talhairfandev)"
 license: "MIT"
 tokens:
   color:
@@ -55,7 +55,7 @@ tokens:
 ---
 
 # Design System Specification — Swiss Architectural Editorial & Brutalist Luxury
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 This document defines the formal visual design contract for this repository. Inspired by luxury print magazines (Vogue, 032c, Kinfolk) and architectural blueprints, this specification rejects standard SaaS patterns in favor of monumentality, hairline precision, and curatorial typography.
 

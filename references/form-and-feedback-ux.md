@@ -1,5 +1,5 @@
 # Form & Interactive State UX Standards
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 Editorial interfaces require functional clarity under all operational conditions. Every interactive surface must account for loading, empty, validation, and error states without fallback to unstyled browser defaults or visual clutter.
 

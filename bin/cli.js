@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Agential Skill CLI (by Talha Irfan / codedits)
+ * Agential Skill CLI (by Talha Irfan / talhairfandev)
  * Zero-dependency interactive and automated installer for any AI agent.
  */
 
@@ -28,7 +28,7 @@ function printBanner() {
   console.log(`
 ${c.cyan}${c.bold}====================================================${c.reset}
 ${c.bold}  Agential Skill CLI (v${PKG.version})${c.reset}
-${c.dim}  Author: Talha Irfan (@codedits)${c.reset}
+${c.dim}  Author: Talha Irfan (@talhairfandev)${c.reset}
 ${c.dim}  Focused on Claude · Google Antigravity · VS Code${c.reset}
 ${c.cyan}${c.bold}====================================================${c.reset}
 `);
@@ -124,7 +124,7 @@ function installSkill(targetDir, targets = ['all']) {
   const contextFile = path.join(targetDir, 'context.md');
   if (!fs.existsSync(contextFile)) {
     const starterContext = `# Project Context: Agential Skill
-*Maintained by Agential Skill (Talha Irfan / @codedits)*
+*Maintained by Agential Skill (Talha Irfan / @talhairfandev)*
 
 ## 1. Vision & Core Objectives
 - **Purpose**: [Briefly describe this project's purpose]

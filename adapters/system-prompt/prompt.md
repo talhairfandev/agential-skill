@@ -1,5 +1,5 @@
 # Agential Skill — System Prompt
-**Author:** Talha Irfan ([@codedits](https://github.com/codedits))
+**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
 Use this prompt as your system directive when building web applications or frontend UI. It enforces a five-step workflow: memory, onboarding, design system, incremental delivery, and post-edit review.
 
