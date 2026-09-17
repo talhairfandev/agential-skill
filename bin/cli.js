@@ -60,15 +60,15 @@ const THEMES = {
     key: 'violet',
     name: 'Brutalist Ultraviolet',
     dot: '\x1b[38;2;192;132;252m',      // #c084fc
-    border: '\x1b[38;2;59;24;95m',      // #3b185f
+    border: '\x1b[38;2;88;28;135m',      // #581c87
     sub: '\x1b[38;2;216;180;254m',      // #d8b4fe
     gradient: [
-      '\x1b[38;2;250;245;255m',         // #faf5ff
-      '\x1b[38;2;233;213;255m',         // #e9d5ff
-      '\x1b[38;2;216;180;254m',         // #d8b4fe
-      '\x1b[38;2;192;132;252m',         // #c084fc
-      '\x1b[38;2;168;85;247m',          // #a855f7
-      '\x1b[38;2;126;34;206m'           // #7e22ce
+      '\x1b[38;2;126;34;206m',         // #7e22ce deep royal violet
+      '\x1b[38;2;147;51;234m',         // #9333ea vivid purple
+      '\x1b[38;2;168;85;247m',         // #a855f7 electric violet
+      '\x1b[38;2;192;132;252m',         // #c084fc radiant lilac violet
+      '\x1b[38;2;216;180;254m',         // #d8b4fe bright electric lavender
+      '\x1b[38;2;233;213;255m'          // #e9d5ff subtle sheen (zero washed-out white)
     ]
   },
   amber: {
@@ -122,15 +122,15 @@ const BANNER_SKILL = [
 ];
 
 function getTheme(themeKey) {
-  const chosen = (themeKey || process.env.AGENTIAL_THEME || 'cyan').toLowerCase();
-  return THEMES[chosen] || THEMES.cyan;
+  const chosen = (themeKey || process.env.AGENTIAL_THEME || 'violet').toLowerCase();
+  return THEMES[chosen] || THEMES.violet;
 }
 
 function printBanner(themeKey) {
   const t = getTheme(themeKey);
   console.log('');
   console.log(t.border + ' ┌─ ' + t.dot + '●' + c.reset + ' ' + c.white + 'Welcome to Agential Skill' + c.reset + c.dim + ' (v' + PKG.version + ')' + t.border + ' ──────────────────────────────┐' + c.reset);
-  console.log(t.border + ' │  ' + t.sub + 'Swiss Architectural Editorial Engine · Talha Irfan (@talhairfandev)  ' + t.border + '│' + c.reset);
+  console.log(t.border + ' │  ' + t.sub + 'Autonomous Frontend Design Engine · Talha Irfan (@talhairfandev)     ' + t.border + '│' + c.reset);
   console.log(t.border + ' └───────────────────────────────────────────────────────────────────────┘' + c.reset);
   console.log('');
 
@@ -289,46 +289,104 @@ function installSkill(targetDir, targets = ['all']) {
   console.log(`${c.dim}Connected AI agents (Cursor, Claude, Copilot, Windsurf, Antigravity) will now automatically enforce this standard.${c.reset}\n`);
 }
 
+const MENU_OPTIONS = [
+  { key: '1', targets: ['all'], label: 'Core Trio (Claude + Antigravity + VS Code) - (Recommended)' },
+  { key: '2', targets: ['claude'], label: 'Claude Code (CLAUDE.md)' },
+  { key: '3', targets: ['antigravity'], label: 'Google Antigravity & Gemini CLI (.agents & AGENTS.md)' },
+  { key: '4', targets: ['copilot'], label: 'VS Code (.github/copilot-instructions.md)' },
+  { key: '5', targets: null, label: 'Export Standalone Prompt for Web LLMs' }
+];
+
 function promptInteractive(targetDir, themeChoice) {
   printBanner(themeChoice);
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+  const t = getTheme(themeChoice);
 
-  console.log(`${c.bold}Choose your AI platform / editor:${c.reset}`);
-  console.log(`  [1] ${c.green}${c.bold}Core Trio${c.reset} (Claude + Antigravity + VS Code) - ${c.dim}(Recommended)${c.reset}`);
-  console.log(`  [2] Claude Code (CLAUDE.md)`);
-  console.log(`  [3] Google Antigravity & Gemini CLI (.agents & AGENTS.md)`);
-  console.log(`  [4] VS Code (.github/copilot-instructions.md)`);
-  console.log(`  [5] Export Standalone Prompt for Web LLMs\n`);
+  if (!process.stdin.isTTY) {
+    installSkill(targetDir, ['all']);
+    return;
+  }
 
-  rl.question(`${c.cyan}Enter choice [1-5] (default: 1): ${c.reset}`, (answer) => {
-    const choice = answer.trim() || '1';
+  console.log(`${c.bold}Choose your AI platform / editor:${c.reset} ${c.dim}(Use ↑/↓ arrows, Enter to select, or 1-5)${c.reset}\n`);
 
-    if (choice === '5') {
-      rl.close();
+  let selectedIndex = 0;
+
+  // Hide cursor during arrow selection
+  process.stdout.write('\x1b[?25l');
+
+  function renderMenu(isInitial) {
+    if (!isInitial) {
+      readline.moveCursor(process.stdout, 0, -MENU_OPTIONS.length);
+    }
+    MENU_OPTIONS.forEach((opt, idx) => {
+      readline.clearLine(process.stdout, 0);
+      readline.cursorTo(process.stdout, 0);
+      if (idx === selectedIndex) {
+        process.stdout.write(`  ${t.dot}${c.bold}❯ [${idx + 1}] ${opt.label}${c.reset}\n`);
+      } else {
+        process.stdout.write(`    ${c.dim}[${idx + 1}] ${opt.label}${c.reset}\n`);
+      }
+    });
+  }
+
+  renderMenu(true);
+
+  readline.emitKeypressEvents(process.stdin);
+  if (process.stdin.isTTY) {
+    process.stdin.setRawMode(true);
+  }
+  process.stdin.resume();
+
+  function onKeypress(str, key) {
+    if (key && key.ctrl && key.name === 'c') {
+      process.stdout.write('\x1b[?25h');
+      process.exit(0);
+    }
+
+    if (key && (key.name === 'up' || key.name === 'k')) {
+      selectedIndex = (selectedIndex - 1 + MENU_OPTIONS.length) % MENU_OPTIONS.length;
+      renderMenu(false);
+    } else if (key && (key.name === 'down' || key.name === 'j')) {
+      selectedIndex = (selectedIndex + 1) % MENU_OPTIONS.length;
+      renderMenu(false);
+    } else if (key && (key.name === 'return' || key.name === 'enter')) {
+      confirmChoice(selectedIndex);
+    } else if (str && ['1', '2', '3', '4', '5'].includes(str)) {
+      selectedIndex = parseInt(str, 10) - 1;
+      renderMenu(false);
+      confirmChoice(selectedIndex);
+    }
+  }
+
+  function confirmChoice(idx) {
+    process.stdin.removeListener('keypress', onKeypress);
+    if (process.stdin.isTTY) {
+      process.stdin.setRawMode(false);
+    }
+    process.stdout.write('\x1b[?25h');
+    console.log('');
+
+    const chosenOption = MENU_OPTIONS[idx];
+    if (chosenOption.key === '5') {
       const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
       console.log(`\n${c.green}Standalone prompt location:${c.reset} ${promptFile}`);
       console.log(`${c.dim}Copy the content of this file and paste it into ChatGPT or Claude Custom Instructions.${c.reset}\n`);
+      process.exit(0);
       return;
     }
 
-    const mapping = {
-      '1': ['all'],
-      '2': ['claude'],
-      '3': ['antigravity'],
-      '4': ['copilot'],
-    };
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
 
-    const selected = mapping[choice] || ['all'];
-
-    rl.question(`\n${c.cyan}Target directory path (default: ${targetDir}): ${c.reset}`, (dirAnswer) => {
+    rl.question(`${t.dot}Target directory path (default: ${targetDir}): ${c.reset}`, (dirAnswer) => {
       rl.close();
       const finalDir = dirAnswer.trim() ? path.resolve(dirAnswer.trim()) : targetDir;
-      installSkill(finalDir, selected);
+      installSkill(finalDir, chosenOption.targets);
     });
-  });
+  }
+
+  process.stdin.on('keypress', onKeypress);
 }
 
 function addPreset(presetName, targetDir, themeChoice) {
@@ -357,7 +415,7 @@ let command = 'init';
 let targetDir = process.cwd();
 let isNonInteractive = false;
 let presetName = null;
-let themeChoice = process.env.AGENTIAL_THEME || 'cyan';
+let themeChoice = process.env.AGENTIAL_THEME || 'violet';
 
 for (let i = 0; i < rawArgs.length; i++) {
   const arg = rawArgs[i];
@@ -368,7 +426,7 @@ for (let i = 0; i < rawArgs.length; i++) {
   } else if (arg.startsWith('--theme=')) {
     themeChoice = arg.split('=')[1];
   } else if (arg === '-t' || arg === '--theme') {
-    themeChoice = rawArgs[++i] || 'cyan';
+    themeChoice = rawArgs[++i] || 'violet';
   } else if (arg === 'init') {
     command = 'init';
   } else if (arg === 'add') {
