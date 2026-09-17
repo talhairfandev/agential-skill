@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Agential Skill CLI (by Talha Irfan / talhairfandev)
+ * Agential Skill CLI
  * Zero-dependency interactive and automated installer for any AI agent.
  */
 
@@ -130,7 +130,7 @@ function printBanner(themeKey) {
   const t = getTheme(themeKey);
   console.log('');
   console.log(t.border + ' ┌─ ' + t.dot + '●' + c.reset + ' ' + c.white + 'Welcome to Agential Skill' + c.reset + c.dim + ' (v' + PKG.version + ')' + t.border + ' ──────────────────────────────┐' + c.reset);
-  console.log(t.border + ' │  ' + t.sub + 'Autonomous Frontend Design Engine · Talha Irfan (@talhairfandev)     ' + t.border + '│' + c.reset);
+  console.log(t.border + ' │  ' + t.sub + 'Autonomous Frontend Architecture & Design Engine                     ' + t.border + '│' + c.reset);
   console.log(t.border + ' └───────────────────────────────────────────────────────────────────────┘' + c.reset);
   console.log('');
 
@@ -143,7 +143,7 @@ function printBanner(themeKey) {
 
   console.log('');
   console.log(c.dim + ' ───────────────────────────────────────────────────────────────────────' + c.reset);
-  console.log(c.dim + '  Supports: ' + c.white + 'Claude Code' + c.reset + c.dim + ' · ' + c.white + 'Google Antigravity' + c.reset + c.dim + ' · ' + c.white + 'VS Code' + c.reset + c.dim + ' · ' + c.white + 'Cursor' + c.reset);
+  console.log(c.dim + '  Version: ' + c.white + 'v' + PKG.version + c.reset + c.dim + '  │  Supports: ' + c.white + 'Claude Code' + c.reset + c.dim + ' · ' + c.white + 'Google Antigravity' + c.reset + c.dim + ' · ' + c.white + 'VS Code' + c.reset);
   console.log(c.dim + ' ───────────────────────────────────────────────────────────────────────' + c.reset);
   console.log('');
 }
