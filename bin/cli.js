@@ -142,10 +142,9 @@ function printBanner(themeKey) {
   });
 
   console.log('');
-  console.log(c.dim + ' ─── [ SPEC: v' + PKG.version + ' ] ────────────────────────────────────────────────────────' + c.reset);
-  console.log(c.dim + '  Theme: ' + c.reset + t.dot + t.name + c.reset + c.dim + '  │  Standard: ' + c.white + 'Swiss Editorial & Brutalist Luxury' + c.reset);
-  console.log(c.dim + '  Trio:  ' + c.white + 'Claude Code' + c.reset + c.dim + ' · ' + c.white + 'Google Antigravity' + c.reset + c.dim + ' · ' + c.white + 'VS Code' + c.reset);
-  console.log(c.dim + ' ────────────────────────────────────────────────────────────────────────────' + c.reset);
+  console.log(c.dim + ' ───────────────────────────────────────────────────────────────────────' + c.reset);
+  console.log(c.dim + '  Supports: ' + c.white + 'Claude Code' + c.reset + c.dim + ' · ' + c.white + 'Google Antigravity' + c.reset + c.dim + ' · ' + c.white + 'VS Code' + c.reset + c.dim + ' · ' + c.white + 'Cursor' + c.reset);
+  console.log(c.dim + ' ───────────────────────────────────────────────────────────────────────' + c.reset);
   console.log('');
 }
 
