@@ -15,24 +15,34 @@ You must follow these five rules on every request, without exception.
 - When starting new UI without design specs, ask 3–4 plain-English questions: visual theme, hero CTA, information density, pacing.
 - **Skip this step** if the user already provided design specs, or if editing an existing page or component. Build immediately.
 
-## 3. Design System
+## 3. Design System — Swiss Architectural Editorial & Brutalist Luxury
 
-Apply the following standards to all generated UI:
+Reject generic software/SaaS patterns (no rounded cards, no drop shadows, no generic icon boxes). Treat the browser like an architectural blueprint and high-fashion editorial catalog (Vogue, 032c, Kinfolk):
 
-- **Color:** Solid high-contrast surfaces only. Obsidian `#0a0a0c`, slate `#0b0f17`, pure white `#ffffff`. No rainbow gradients. Single-color monochromatic ambient glows are allowed.
-- **Typography:** Space Grotesk (display/titles), Plus Jakarta Sans (body), Manrope, or Inter. No decorative or novelty fonts. Use bracketed uppercase micro-labels (`[ OUR PROCESS ]`, `tracking-[0.25em]`) for section eyebrows.
-- **Border Radius:** Buttons/CTAs: `6–8 px` (`rounded-md` / `rounded-lg`). Cards: `8–12 px` (`rounded-xl`). Never use pill shapes (`9999px` / `rounded-full`) unless explicitly requested.
-- **Layout:** Full-bleed edge-to-edge sections (`w-full min-h-[100dvh]`). Inner content centered in an executive container (`max-w-7xl px-4 sm:px-6 lg:px-8`). No narrow boxed containers with dead lateral whitespace.
-- **Heroes:** Must be full-viewport, edge-to-edge. Must include a signature centerpiece (application window mockup, interactive preview, or terminal) — never empty text floating in void.
-- **Cards:** 1px translucent border (`border-white/10 hover:border-white/25`), subtle surface gradient (`bg-gradient-to-b from-white/[0.03] to-transparent`), `12px` corners, hover lift (`hover:-translate-y-1 hover:shadow-2xl`), bracketed micro-tags, inner editorial hierarchy.
-- **Section Architecture:** Distinct storytelling sections, one signature component per section. Desktop: `min-height: 100–140vh` for sticky reveals; natural fluid height with generous padding (`py-24` to `py-32`) for static content. Mobile: `min-height: auto` or `100svh`/`100dvh`, stacked layouts. Always use `min-height`, never fixed `height`.
-- **Grid Layouts:** Asymmetric bento grids (e.g. 8-col + 4-col) with functional micro-interfaces. No generic identical-card rows.
-- **Interactivity:** All rendered controls (tabs, filters, modals, copy buttons) must have working client-side state. No non-functional mock UI.
-- **Accessibility:** WCAG 2.1 AA conformance. Maintain 4.5:1 text contrast minimum (`text-zinc-400` minimum on obsidian dark surfaces), visible keyboard focus indicators (`focus-visible:ring-2 focus-visible:ring-blue-500`), explicit `aria-label` on icon-only buttons, and `motion-reduce` support.
-- **State UX:** Explicit `<label>` on all form inputs, inline validation (`aria-invalid`, `role="alert"`), geometric skeleton loaders instead of spinners, and actionable empty states.
-- **Motion:** Use Framer Motion (`framer-motion` / `motion/react`). Smooth slide-up text reveals (`opacity: 0, y: 24` → `1, 0`), scroll reveals (`whileInView`), staggered cards (`staggerChildren: 0.1`).
-- **Styling:** Tailwind CSS. Support both v4 (CSS-first `@theme` in `globals.css`) and v3 (`tailwind.config.ts`). Map design tokens directly: obsidian `bg-[#0a0a0c]`, buttons `rounded-md` (6px) to `rounded-lg` (8px), cards `rounded-xl` (12px), full-bleed containers `w-full min-h-[100dvh]`.
-- **Advanced Interactions:** Dual-state rolling links (`RollText`), sticky card stacking (`top: ${70 + index * 32}px`, scale `0.94`, brightness `0.55`), fluid button fills (`LiquidButton`), magnetic hover inertia (desktop only, disabled below `768px`).
+- **1. Zero Radius & Hairline Wireframing (The Anti-Card Law):**
+  - **Strict Zero Radius:** `border-radius: 0` (`rounded-none`) across ALL containers, buttons, tags, and images. Absolutely NO rounded pill buttons (`rounded-full`) or bubble cards.
+  - **Hairline Gridlines:** Divide all sections, rows, and columns with crisp 1px borders (`border-neutral-200` on light, `border-white/12` on dark). No soft drop shadows or blurred glassmorphism.
+  - **Ledger / Index Rows:** Replace 3-column floating card grids with horizontal archival ledger rows:
+    `[ 01 ]  |  Headline / Capability  |  Technical Spec / Metadata  |  →`
+- **2. Extreme Scale Polarity (The 10:1 Typographic Tension):**
+  - **The Colossal Display:** Headings set at 80px–140px (`text-6xl` to `text-9xl`), ultra-tight negative tracking (`tracking-[-0.04em]` to `tracking-[-0.06em]`), compressed line-height (`leading-[0.9]` to `leading-[0.95]`). Fonts: Space Grotesk, PP Neue Montreal, Syne, or Helvetica Neue.
+  - **The Microscopic Precision:** Utility labels, specs, and dates set at 9px–11px (`text-[10px]` to `text-xs`), uppercase, monospace or sans, wide letter-spacing (`tracking-[0.15em]` to `tracking-[0.25em]`).
+  - **Editorial Artifacts:** Integrate subtle registry marks (`®`, `™`, `©`), spec tags (`[STATUS: ACTIVE]`, `● AIRFRAME / 2026`, `COORDINATES: 52.5200° N`), and bracketed index numerals (`[ 01 ]`, `[ VOL. IV ]`).
+  - **STRICT COLOR LAW:** Paragraphs and subtitles MUST NEVER be colored blue, cyan, or purple. Subtitles must strictly be neutral (`text-zinc-400` on dark, `text-zinc-600` on light). Accent colors are reserved strictly for tiny micro-indicators and telemetry dots.
+- **3. Stark Monolithic Contrast:**
+  - Strict two-tone base: pure `#FFFFFF` crashing directly into pitch-black `#000000` / `#080808` monolith sections.
+  - Dead-straight horizontal dividing lines. No wavy dividers, no pastel blobs, no rainbow gradients.
+- **4. Photographic Art Direction & Media:**
+  - Mandate rigid locked aspect ratios (`aspect-[3/4]`, `aspect-[4/5]`, `aspect-[16/9]`).
+  - Images must use `object-cover`, `rounded-none`, with high-contrast, chiaroscuro, cinematic, or desaturated lighting. No cartoonish digital illustrations or floating UI mockups in voids.
+- **5. Section Architecture & Layout:**
+  - Full-bleed edge-to-edge structure (`w-full`). Generous vertical pacing (`py-24` to `py-36`).
+  - Asymmetric 12-column architectural grid splits (e.g., 5-col content / 7-col media) mapped with 1px hairlines.
+- **6. Interactivity & State UX:**
+  - Working client-side state for all interactive triggers. Zero-radius action buttons (`rounded-none px-6 py-3 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black`).
+  - WCAG 2.1 AA conformance: 4.5:1 text contrast minimum, visible square focus rings (`focus-visible:ring-2 focus-visible:ring-offset-2`), `aria-label` on icon controls, and `prefers-reduced-motion` support.
+- **7. Motion:**
+  - Use Framer Motion (`framer-motion` / `motion/react`). Clean linear reveals (`opacity: 0, y: 16` → `1, 0`), staggered ledger entry (`staggerChildren: 0.06`). Never bouncy, playful, or cartoonish.
 
 ## 4. Incremental Delivery
 

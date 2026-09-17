@@ -45,11 +45,13 @@
 - [x] State UX and feedback patterns codified (`references/form-and-feedback-ux.md`).
 - [x] Google Labs `DESIGN.md` specification implemented with machine-readable tokens and CLI auto-install.
 - [x] Streamlined focus to Claude Code, Google Antigravity, and VS Code with an instant Fast Reference matrix for AI comprehension.
+- [x] Codified Swiss Architectural Editorial & Brutalist Luxury standard: zero border-radius (`rounded-none`), 10:1 typographic scale polarity, the Ledger System (banning floating card UI), hairline architectural wireframes, archival artifacts (®, ™, [01]), and monolithic contrast.
 
 ## 5. Active Conventions
 
 - Always check `context.md` first.
-- Ask the onboarding questionnaire before starting new UI without specs.
-- Enforce WCAG 2.1 AA contrast (>= 4.5:1), visible focus rings, and reduced motion fallbacks.
-- Deliver in incremental chunks (navbar + hero first).
-- Run post-edit review (including accessibility and syntax check) after every file modification.
+- Strict Zero Radius: `border-radius: 0` (`rounded-none`) across all elements, buttons, and images.
+- 10:1 Typographic Tension: Colossal headings (80px–140px, tight tracking) paired with microscopic utility labels (10px–11px, wide tracking).
+- The Ledger System: Replace floating card boxes with stacked horizontal ledger rows with hairline dividers.
+- Strict Color Law: Subtitles and paragraphs MUST NEVER be blue/cyan/purple.
+- Run post-edit review after every file modification.

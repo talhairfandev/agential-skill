@@ -1,10 +1,10 @@
 {
   "name": "agential-skill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The user-first web & UI development skill for any AI agent (Antigravity, Cursor, Copilot, Claude, ChatGPT).",
   "main": "bin/cli.js",
   "bin": {
-    "agential-skill": "./bin/cli.js"
+    "agential-skill": "bin/cli.js"
   },
   "keywords": [
     "ai",
@@ -21,7 +21,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codedits/agential-skill.git"
+    "url": "git+https://github.com/codedits/agential-skill.git"
   },
   "bugs": {
     "url": "https://github.com/codedits/agential-skill/issues"

@@ -30,8 +30,8 @@ A model-agnostic skill that enforces a disciplined five-step workflow for fronte
 |:---|:---|:---|
 | **1. Memory** | Read `context.md` at start; update after milestones. | Persists across session truncations and model switches. |
 | **2. Onboarding** | Ask 4 questions before building new UI without specs. | 1. Theme, 2. Hero CTA, 3. Density, 4. Pacing. (Skip on edits). |
-| **3. Design System** | Enforce Swiss editorial aesthetic. | **Surfaces:** Obsidian `#0a0a0c`, Slate `#0b0f17`, White `#ffffff`. Strictly no rainbow gradients.<br>**Radius:** Buttons `6–8px` (`rounded-md`), Cards `8–12px` (`rounded-xl`). Never pill (`rounded-full`).<br>**Typography:** Space Grotesk (display), Plus Jakarta Sans (body), `[ BRACKETED TAGS ]`.<br>**Layout:** Full-bleed (`w-full min-h-[100dvh]`), executive container (`max-w-7xl`).<br>**Accessibility:** WCAG 2.1 AA (4.5:1 text contrast minimum, `focus-visible:ring-2`, `motion-reduce`). |
-| **4. Delivery** | Build in complete, cohesive chunks. | Start with Navbar + Hero centerpiece. Pause for user review. |
+| **3. Design System** | Enforce Swiss Architectural Editorial & Brutalist Luxury. | **Zero Radius:** `border-radius: 0` (`rounded-none`) across all elements, buttons, and media. Absolutely NO rounded cards or pill buttons.<br>**10:1 Typographic Tension:** Colossal titles (80px–140px, `tracking-[-0.04em]`, `leading-[0.9]`) paired with microscopic metadata (10px–11px, `tracking-[0.15em]`, mono/uppercase).<br>**Editorial Artifacts:** Add `®`, `™`, `©`, `[ 01 ]`, `[STATUS: ACTIVE]`, `● AVAILABLE`, and coordinate stamps.<br>**Hairline Wireframes:** Crisp 1px borders (`border-neutral-200` or `border-white/12`). Forbid drop shadows and blurred glass.<br>**The Ledger System:** Replace floating 3-column card grids with stacked horizontal ledger rows.<br>**Monolithic Contrast:** Pure `#FFFFFF` sections crash directly into pitch-black `#000000` / `#080808` sections.<br>**Strict Color Law:** Subtitles and paragraphs MUST NEVER be blue/cyan/purple. Subtitles are strictly neutral (`text-zinc-400` / `text-zinc-600`).<br>**Media:** Rigid aspect ratios (`aspect-[3/4]`, `aspect-[4/5]`, `aspect-[16/9]`), `object-cover`, chiaroscuro/desaturated lighting. |
+| **4. Delivery** | Build in complete, cohesive chunks. | Start with Navbar + Hero stage. Pause for user review. |
 | **5. Review** | Mandatory diff check before reporting done. | Verify syntax, closed tags, imports, accessibility, and zero deletions. |
 
 ---
@@ -51,10 +51,10 @@ Chat sessions get lost, truncated, or restarted. The `context.md` file in the pr
 
 Before building any new frontend page or component from an underspecified prompt, ask 3–4 structured, plain-English questions:
 
-1. **Visual Theme** — Deep obsidian dark (`#0a0a0c`), slate engineering dark (`#0b0f17`), or studio white (`#ffffff`).
-2. **Hero Message & Primary Action** — The main headline and the single most important button.
-3. **Information Density** — Spacious and modern (recommended) or compact dashboard.
-4. **Pacing** — Confirm starting with navbar + hero, then iterating.
+1. **Visual Theme** — Pitch-black brutalist luxury (`#000000` / `#080808`, recommended for tech/aerospace/fashion), warm editorial portfolio (`#faf9f5` with hairline grids), or high-contrast monolithic two-tone.
+2. **Hero Message & Primary Action** — The main colossal headline and the primary action trigger.
+3. **Information Density** — Curatorial catalog index (recommended) or dense architectural matrix.
+4. **Pacing** — Confirm starting with navbar + hero stage, then iterating.
 
 **Skip this step** when:
 - The user already specified theme, colors, or component requirements.
@@ -64,127 +64,79 @@ Before building any new frontend page or component from an underspecified prompt
 
 ---
 
-## Pillar 3 — Design System
+## Pillar 3 — Design System (Swiss Architectural Editorial & Brutalist Luxury)
 
-### 3.1 Color
+### 3.1 Theme Defaults & Monolithic Contrast
 
-- **Banned:** Rainbow gradients, multicolor linear/radial gradients on backgrounds, cards, buttons, or text.
-- **Allowed:** Single-color monochromatic atmospheric glows and radial spotlights (e.g. `radial-gradient(circle at top center, rgba(59,130,246,0.12), transparent 70%)`).
-- **Default palette:** Obsidian `#0a0a0c`, slate `#0b0f17`, pure black, clean off-white `#f8fafc`. Accent with solid colors like `#3b82f6` (blue) or `#10b981` (emerald).
+- **Rejection of SaaS Patterns:** Reject generic software UI patterns: no floating rounded cards, no soft drop shadows, no colorful gradient buttons, no pastel blobs. Treat the browser as a printed architectural blueprint and high-fashion luxury catalog (inspired by Vogue, 032c, Kinfolk, Kanso, Akihiko).
+- **Monolithic Inversion:** Rely on stark, dramatic contrast. Clean white expanses crash directly into pitch-black monolith sections (`#000000` or `#080808`) separated by a razor-sharp dead-straight horizontal line.
+- **Hairline Architectural Gridlines:** Use visible structural 1px dividers (`border-neutral-200` on light, `border-white/12` on dark) mapping every axis.
+- **Strict Color Law for Copy:** Subtitles and paragraphs MUST NEVER be colored blue, cyan, green, or purple. Subtitles must strictly be neutral (`text-zinc-400` on dark, `text-zinc-600` on light). Accent colors (e.g. warm vermilion, cobalt) are strictly reserved for micro-status indicators.
 
-| Surface | Background | Card | Border (1px) | Text | Accent |
-|:---|:---|:---|:---|:---|:---|
-| Obsidian Dark | `#0a0a0c` | `#121318` | `rgba(255,255,255,0.08)` | `#f8fafc` | `#3b82f6` |
-| Slate Dark | `#0b0f17` | `#111827` | `rgba(255,255,255,0.07)` | `#f1f5f9` | `#10b981` |
-| Studio Light | `#ffffff` | `#f8fafc` | `rgba(0,0,0,0.08)` | `#0f172a` | `#2563eb` |
-| Warm Editorial | `#faf9f5` | `#f3f1ea` | `rgba(0,0,0,0.06)` | `#1c1917` | `#0284c7` |
+### 3.2 Typographic Tension (The 10:1 Scale Polarity)
 
-Dual-theme variables:
-```css
-:root { --background: #f7f7f7; --foreground: #0a0a0a; }
-.dark { --background: #000000; --foreground: #f7f7f7; }
-.section-dark { background-color: #000; color: #f7f7f7; }
-::selection { background-color: var(--foreground); color: var(--background); }
-```
+- **The Colossal Heading:** Set primary headings between 80px and 140px (`text-6xl` to `text-9xl`), ultra-tight negative letter-spacing (`tracking-[-0.04em]` to `tracking-[-0.06em]`), compressed line-height (`leading-[0.9]` to `leading-[0.95]`). Fonts: Space Grotesk, PP Neue Montreal, Syne, or Helvetica Neue.
+- **The Microscopic Precision:** Utility labels, metadata, dates, and categories set between 9px and 11px (`text-[10px]` to `text-xs`), uppercase, monospace or sans, wide letter-spacing (`tracking-[0.15em]` to `tracking-[0.25em]`).
+- **Archival Metadata & Editorial Artifacts:**
+  - Trademark & registry markers: `®`, `™`, `©` attached to primary headings and brand marks.
+  - Spec-sheet tags: `[STATUS: ACTIVE]`, `● AVAILABLE FOR WORK`, `INDEX / 2026`, `LAT: 52.5200° N`.
+  - Bracketed index numerals: `[ 01 ]`, `[ 02 ]`, `[ VOL. IV ]`.
 
-### 3.2 Typography
+### 3.3 Zero Radius (The Anti-Card Law)
 
-| Role | Font | Notes |
-|:---|:---|:---|
-| Display / titles / large numerals | Space Grotesk | Negative tracking (`-0.04em` to `-0.02em`) |
-| Body / interface | Plus Jakarta Sans | Relaxed leading (`leading-relaxed`) |
-| Geometric luxury | Manrope | Agency/portfolio contexts |
-| Dashboard precision | Inter / Geist | Data-dense interfaces |
+- **Strict Zero Radius:** `border-radius: 0` (`rounded-none`) across all elements, buttons, input fields, tags, and image containers.
+- **Prohibited:** Rounded pill shapes (`rounded-full`), soft bubble cards (`rounded-2xl`), floating drop shadows (`shadow-xl`), and blurred glassmorphism.
 
-Never use funky, decorative, cartoonish, or novelty fonts.
-
-**Section eyebrows** use the bracketed uppercase format:
-```tsx
-<span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-zinc-400">
-  [ OUR PROCESS ]
-</span>
-```
-
-### 3.3 Border Radius
-
-| Component | Radius | Tailwind |
-|:---|:---|:---|
-| Buttons & CTAs | 6–8 px | `rounded-md` / `rounded-lg` |
-| Cards & modals | 8–12 px | `rounded-lg` / `rounded-xl` |
-| Badges & tags | 4–6 px | `rounded-sm` |
-| Inputs | 6–8 px | `rounded-md` / `rounded-lg` |
-
-Never use `rounded-full` / `9999px` unless explicitly requested.
-
-### 3.4 Navbar & Hero
+### 3.4 Navbar & Hero Stage
 
 **Navbar:**
-- Sticky/fixed at top, `z-index: 100`.
-- `backdrop-filter: blur(16px)` with semi-transparent background.
-- 1px bottom border (`rgba(255,255,255,0.08)` dark / `rgba(0,0,0,0.08)` light).
-- Compact sans-serif links (`0.9rem`, `font-weight: 500`).
-- Minimal-radius action CTA (`border-radius: 6px`).
+- Full-bleed 1px hairline bottom border (`border-b border-white/12` or `border-neutral-200`).
+- No pill buttons. Use sharp rectangular buttons (`rounded-none px-5 py-2.5 text-xs font-mono tracking-widest uppercase`).
+- Minimal text navigation in small caps/uppercase with micro-index tags.
 
-**Hero:**
-- Full-bleed edge-to-edge: `w-full min-h-[100dvh]`. The outer wrapper must never sit inside a boxed container with horizontal page margins.
-- Ambient spotlights, backgrounds, and canvases span 100% viewport width.
-- Inner content centered in `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
-- Generous padding (`pt-32 pb-20 md:pt-40 md:pb-28`).
-- Clean typographic hierarchy: eyebrow tag → authoritative headline → balanced subtitle → dual CTA row.
-- **Signature centerpiece required.** Never create an empty hero with just floating text. Always include an application window mockup, interactive preview, or terminal.
+**Hero Stage:**
+- Full-bleed edge-to-edge: `w-full min-h-[100dvh]` with generous vertical padding (`py-24` to `py-36`).
+- Colossal headline paired with microscopic archival tags (`[ 01 ]`, `EST. 2026`, `®`).
+- Media centerpiece must use locked aspect ratios (`aspect-[16/9]`, `aspect-[4/5]`, `aspect-[3/4]`), `object-cover`, `rounded-none`, and hairline 1px border.
 
-### 3.5 Cards
+### 3.5 The Ledger System (Replacing the "Card UI")
 
-When cards are used, enforce this standard:
+Ordinary websites use floating cards. High-end editorial sites format capabilities and services as **horizontal ledger rows** (like an archival auction catalog or technical invoice):
 
-- **Border:** `border border-white/10 hover:border-white/25` (dark) or `border border-black/[0.07] hover:border-black/[0.15]` (light).
-- **Surface:** `bg-[#121318]` with `bg-gradient-to-b from-white/[0.03] to-transparent`.
-- **Corners:** `rounded-xl` (12 px).
-- **Hover:** `hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-300`.
-- **Inner structure:** Bracketed micro-tag → Space Grotesk title → Plus Jakarta Sans body → footer/telemetry row.
-
-### 3.6 Section Architecture
-
-Structure web applications into distinct, self-contained sections. Each section has one signature component.
-
-| Section Type | Desktop Height | Mobile Height |
-|:---|:---|:---|
-| Hero | `min-height: 100vh` / `100dvh` | `100svh` or `auto` |
-| Sticky feature reveal | `min-height: 120–140vh` | `auto` |
-| Bento grid / ecosystem | `min-height: 100–130vh` | `auto` |
-| Metrics / proof | `min-height: 80–100vh` | `auto` |
-| Final CTA | `min-height: 80–100vh` | `auto` |
-
-**Rules:**
-- Always use `min-height`, never fixed `height`.
-- 120–140vh is strictly for sticky scroll stages. Static content uses natural height with generous padding (`py-24` to `py-32`).
-- Mobile (`<768px`): Use `min-height: auto` or `100svh`/`100dvh`. Stack layouts to single column. Disable sticky stacking.
-- Full-width layout priority: sections span edge-to-edge (`w-full`). Inner content sits in an executive container (`max-w-7xl` or `max-w-screen-2xl`).
-
-### 3.7 Grid Layouts
-
-Do not generate identical card rows. Use asymmetric bento grids:
-
-```html
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-  <div class="md:col-span-8 rounded-xl border border-white/10 bg-[#121318] p-8">
-    <!-- Primary showcase -->
+```tsx
+// Compliant Horizontal Ledger Row
+<div className="w-full border-t border-neutral-200 dark:border-white/12 py-6 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors rounded-none">
+  <div className="flex items-center gap-6">
+    <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500">[ 01 ]</span>
+    <h3 className="text-xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
+      Supersonic Shockwave Dispersion™
+    </h3>
   </div>
-  <div class="md:col-span-4 rounded-xl border border-white/10 bg-[#121318] p-8">
-    <!-- Metrics / telemetry -->
+  <div className="flex items-center gap-8">
+    <span className="text-xs font-mono tracking-wider text-zinc-400">MACH 2.2 COHESION</span>
+    <span className="text-sm font-mono text-zinc-500 group-hover:translate-x-1 transition-transform">→</span>
   </div>
 </div>
 ```
 
-### 3.8 Interactivity
+### 3.6 Media & Photographic Art Direction
 
-All rendered UI controls must have working client-side state:
-- Tab switchers must change the active view.
-- Search inputs must filter content.
-- Copy buttons must write to clipboard and show confirmation.
-- Modals and accordions must toggle open and closed.
+- **Rigid Aspect Ratios:** All visual media must enforce locked ratios (`aspect-[3/4]`, `aspect-[4/5]`, `aspect-[16/9]`).
+- **Styling:** `rounded-none`, `object-cover`, with subtle 1px hairline framing.
+- **Lighting & Tone:** Chiaroscuro lighting, architectural concrete, high contrast, subtle film grain, or muted desaturated tones. Strictly no stock cartoon illustrations or floating 3D icons.
 
-Never render non-functional mock UI.
+### 3.7 Asymmetric 12-Column Architectural Grids
+
+Structure pages using 12-column architectural splits rather than symmetric 3-box rows:
+- Example: 5-column editorial sticky index on the left, 7-column media catalogue on the right.
+- Separated by crisp vertical and horizontal hairline borders (`border-r`, `border-l`, `border-t`, `border-b`).
+
+### 3.8 Interactivity & State UX
+
+All interactive controls must feature working client-side state:
+- Zero-radius buttons (`rounded-none px-6 py-3 font-mono text-xs uppercase tracking-widest bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black`).
+- Tab switchers, drawer toggles, and modal dossiers with instant responsive state.
+- WCAG 2.1 AA conformance: visible square focus rings (`focus-visible:ring-2 focus-visible:ring-offset-2`), 4.5:1 text contrast minimum, `motion-reduce` support.
 
 ### 3.9 Motion
 
