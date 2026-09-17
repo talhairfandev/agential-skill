@@ -46,6 +46,7 @@
 - [x] Google Labs `DESIGN.md` specification implemented with machine-readable tokens and CLI auto-install.
 - [x] Streamlined focus to Claude Code, Google Antigravity, and VS Code with an instant Fast Reference matrix for AI comprehension.
 - [x] Codified Swiss Architectural Editorial & Brutalist Luxury standard: zero border-radius (`rounded-none`), 10:1 typographic scale polarity, the Ledger System (banning floating card UI), hairline architectural wireframes, archival artifacts (®, ™, [01]), and monolithic contrast.
+- [x] 3D Architectural Terminal Banner with multi-theme color variations (Electric Blueprint, Matrix Mint, Brutalist Ultraviolet, Solar Monolith, Vogue Scarlet) and `npx agential-skill themes` preview.
 
 ## 5. Active Conventions
 
