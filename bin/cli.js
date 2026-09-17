@@ -12,26 +12,155 @@ const readline = require('readline');
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PKG = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
 
-// ANSI colors
+// ANSI Colors & Theming
 const c = {
   reset: '\x1b[0m',
   bold: '\x1b[1m',
   dim: '\x1b[2m',
+  white: '\x1b[1m\x1b[37m',
   cyan: '\x1b[36m',
   green: '\x1b[32m',
   yellow: '\x1b[33m',
-  magenta: '\x1b[35m',
   blue: '\x1b[34m',
+  magenta: '\x1b[35m'
 };
 
-function printBanner() {
-  console.log(`
-${c.cyan}${c.bold}====================================================${c.reset}
-${c.bold}  Agential Skill CLI (v${PKG.version})${c.reset}
-${c.dim}  Author: Talha Irfan (@talhairfandev)${c.reset}
-${c.dim}  Focused on Claude · Google Antigravity · VS Code${c.reset}
-${c.cyan}${c.bold}====================================================${c.reset}
-`);
+const THEMES = {
+  cyan: {
+    key: 'cyan',
+    name: 'Electric Blueprint',
+    dot: '\x1b[38;2;56;189;248m',       // #38bdf8
+    border: '\x1b[38;2;51;65;85m',      // #334155
+    sub: '\x1b[38;2;148;163;184m',      // #94a3b8
+    gradient: [
+      '\x1b[38;2;224;242;254m',         // #e0f2fe
+      '\x1b[38;2;186;230;253m',         // #bae6fd
+      '\x1b[38;2;125;211;252m',         // #7dd3fc
+      '\x1b[38;2;56;189;248m',          // #38bdf8
+      '\x1b[38;2;14;165;233m',          // #0ea5e9
+      '\x1b[38;2;2;132;199m'            // #0284c7
+    ]
+  },
+  emerald: {
+    key: 'emerald',
+    name: 'Matrix Mint',
+    dot: '\x1b[38;2;52;211;153m',       // #34d399
+    border: '\x1b[38;2;30;64;48m',      // #1e4030
+    sub: '\x1b[38;2;167;243;208m',      // #a7f3d0
+    gradient: [
+      '\x1b[38;2;236;253;245m',         // #ecfdf5
+      '\x1b[38;2;167;243;208m',         // #a7f3d0
+      '\x1b[38;2;110;231;183m',         // #6ee7b7
+      '\x1b[38;2;52;211;153m',          // #34d399
+      '\x1b[38;2;16;185;129m',          // #10b981
+      '\x1b[38;2;5;150;105m'            // #059669
+    ]
+  },
+  violet: {
+    key: 'violet',
+    name: 'Brutalist Ultraviolet',
+    dot: '\x1b[38;2;192;132;252m',      // #c084fc
+    border: '\x1b[38;2;59;24;95m',      // #3b185f
+    sub: '\x1b[38;2;216;180;254m',      // #d8b4fe
+    gradient: [
+      '\x1b[38;2;250;245;255m',         // #faf5ff
+      '\x1b[38;2;233;213;255m',         // #e9d5ff
+      '\x1b[38;2;216;180;254m',         // #d8b4fe
+      '\x1b[38;2;192;132;252m',         // #c084fc
+      '\x1b[38;2;168;85;247m',          // #a855f7
+      '\x1b[38;2;126;34;206m'           // #7e22ce
+    ]
+  },
+  amber: {
+    key: 'amber',
+    name: 'Solar Monolith',
+    dot: '\x1b[38;2;251;191;36m',       // #fbbf24
+    border: '\x1b[38;2;69;26;3m',       // #451a03
+    sub: '\x1b[38;2;253;230;138m',      // #fde68a
+    gradient: [
+      '\x1b[38;2;254;243;199m',         // #fef3c7
+      '\x1b[38;2;253;230;138m',         // #fde68a
+      '\x1b[38;2;252;211;77m',          // #fcd34d
+      '\x1b[38;2;251;191;36m',          // #fbbf24
+      '\x1b[38;2;245;158;11m',          // #f59e0b
+      '\x1b[38;2;180;83;9m'             // #b45309
+    ]
+  },
+  crimson: {
+    key: 'crimson',
+    name: 'Vogue Scarlet',
+    dot: '\x1b[38;2;248;113;113m',      // #f87171
+    border: '\x1b[38;2;76;5;25m',       // #4c0519
+    sub: '\x1b[38;2;252;165;165m',      // #fca5a5
+    gradient: [
+      '\x1b[38;2;255;241;242m',         // #fff1f2
+      '\x1b[38;2;254;205;211m',         // #fecdd3
+      '\x1b[38;2;251;113;133m',         // #fb7185
+      '\x1b[38;2;244;63;94m',           // #f43f5e
+      '\x1b[38;2;225;29;72m',           // #e11d48
+      '\x1b[38;2;159;18;57m'            // #9f1239
+    ]
+  }
+};
+
+const BANNER_AGENTIAL = [
+  '  █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ █████╗ ██╗     ',
+  ' ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔══██╗██║     ',
+  ' ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║███████║██║     ',
+  ' ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██╔══██║██║     ',
+  ' ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║██║  ██║███████╗',
+  ' ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝'
+];
+
+const BANNER_SKILL = [
+  ' ███████╗██╗  ██╗██╗██╗     ██╗     ',
+  ' ██╔════╝██║ ██╔╝██║██║     ██║     ',
+  ' ███████╗█████╔╝ ██║██║     ██║     ',
+  ' ╚════██║██╔═██╗ ██║██║     ██║     ',
+  ' ███████║██║  ██╗██║███████╗███████╗',
+  ' ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝'
+];
+
+function getTheme(themeKey) {
+  const chosen = (themeKey || process.env.AGENTIAL_THEME || 'cyan').toLowerCase();
+  return THEMES[chosen] || THEMES.cyan;
+}
+
+function printBanner(themeKey) {
+  const t = getTheme(themeKey);
+  console.log('');
+  console.log(t.border + ' ┌─ ' + t.dot + '●' + c.reset + ' ' + c.white + 'Welcome to Agential Skill' + c.reset + c.dim + ' (v' + PKG.version + ')' + t.border + ' ──────────────────────────────┐' + c.reset);
+  console.log(t.border + ' │  ' + t.sub + 'Swiss Architectural Editorial Engine · Talha Irfan (@talhairfandev)  ' + t.border + '│' + c.reset);
+  console.log(t.border + ' └───────────────────────────────────────────────────────────────────────┘' + c.reset);
+  console.log('');
+
+  BANNER_AGENTIAL.forEach((line, i) => {
+    console.log(t.gradient[i] + line + c.reset);
+  });
+  BANNER_SKILL.forEach((line, i) => {
+    console.log(t.gradient[i] + line + c.reset);
+  });
+
+  console.log('');
+  console.log(c.dim + ' ─── [ SPEC: v' + PKG.version + ' ] ────────────────────────────────────────────────────────' + c.reset);
+  console.log(c.dim + '  Theme: ' + c.reset + t.dot + t.name + c.reset + c.dim + '  │  Standard: ' + c.white + 'Swiss Editorial & Brutalist Luxury' + c.reset);
+  console.log(c.dim + '  Trio:  ' + c.white + 'Claude Code' + c.reset + c.dim + ' · ' + c.white + 'Google Antigravity' + c.reset + c.dim + ' · ' + c.white + 'VS Code' + c.reset);
+  console.log(c.dim + ' ────────────────────────────────────────────────────────────────────────────' + c.reset);
+  console.log('');
+}
+
+function showThemes() {
+  console.log(c.bold + '\nAvailable Agential Skill Color Themes:\n' + c.reset);
+  Object.keys(THEMES).forEach((key) => {
+    const t = THEMES[key];
+    console.log('  ' + t.dot + '●' + c.reset + ' ' + c.bold + key.padEnd(10) + c.reset + ' ' + c.dim + '— ' + t.name + c.reset);
+    const preview = t.gradient.map((g) => g + '███' + c.reset).join(' ');
+    console.log('    Palette: ' + preview + '\n');
+  });
+  console.log(c.dim + 'To use a theme in your commands:' + c.reset);
+  console.log('  npx agential-skill --theme=emerald');
+  console.log('  npx agential-skill --theme=violet');
+  console.log('  npx agential-skill --theme=amber\n');
 }
 
 function copyRecursiveSync(src, dest) {
@@ -160,8 +289,8 @@ function installSkill(targetDir, targets = ['all']) {
   console.log(`${c.dim}Connected AI agents (Cursor, Claude, Copilot, Windsurf, Antigravity) will now automatically enforce this standard.${c.reset}\n`);
 }
 
-function promptInteractive(targetDir) {
-  printBanner();
+function promptInteractive(targetDir, themeChoice) {
+  printBanner(themeChoice);
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -202,8 +331,8 @@ function promptInteractive(targetDir) {
   });
 }
 
-function addPreset(presetName, targetDir) {
-  printBanner();
+function addPreset(presetName, targetDir, themeChoice) {
+  printBanner(themeChoice);
   const presetFile = path.join(ROOT_DIR, 'presets', `${presetName}.md`);
   if (!fs.existsSync(presetFile)) {
     console.error(`${c.yellow}Preset "${presetName}" not found.${c.reset}`);
@@ -228,6 +357,7 @@ let command = 'init';
 let targetDir = process.cwd();
 let isNonInteractive = false;
 let presetName = null;
+let themeChoice = process.env.AGENTIAL_THEME || 'cyan';
 
 for (let i = 0; i < rawArgs.length; i++) {
   const arg = rawArgs[i];
@@ -235,6 +365,10 @@ for (let i = 0; i < rawArgs.length; i++) {
     isNonInteractive = true;
   } else if (arg === '-d' || arg === '--dir' || arg === '--target') {
     targetDir = path.resolve(rawArgs[++i] || '.');
+  } else if (arg.startsWith('--theme=')) {
+    themeChoice = arg.split('=')[1];
+  } else if (arg === '-t' || arg === '--theme') {
+    themeChoice = rawArgs[++i] || 'cyan';
   } else if (arg === 'init') {
     command = 'init';
   } else if (arg === 'add') {
@@ -242,6 +376,8 @@ for (let i = 0; i < rawArgs.length; i++) {
     presetName = rawArgs[++i];
   } else if (arg === 'prompt' || arg === '--prompt') {
     command = 'prompt';
+  } else if (arg === 'themes' || arg === '--themes') {
+    command = 'themes';
   } else if (arg === '--help' || arg === '-h' || arg === 'help') {
     command = 'help';
   } else if (!arg.startsWith('-') && i === 0) {
@@ -255,16 +391,21 @@ if (!process.stdin.isTTY && command === 'init') {
 }
 
 if (command === 'help') {
-  printBanner();
+  printBanner(themeChoice);
   console.log(`Usage:
   npx agential-skill init             Interactive setup for your workspace
   npx agential-skill init -y          Automated, non-interactive install for all platforms
   npx agential-skill add <preset>     Add framework preset (react-nextjs, vue-nuxt)
   npx agential-skill prompt           Show standalone system prompt location
+  npx agential-skill themes           Preview all color theme variations
+  npx agential-skill --theme=<name>   Set theme (cyan, emerald, violet, amber, crimson)
   npx agential-skill --help           Display help message
 `);
+} else if (command === 'themes') {
+  printBanner(themeChoice);
+  showThemes();
 } else if (command === 'prompt') {
-  printBanner();
+  printBanner(themeChoice);
   const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
   console.log(`${c.green}Standalone system prompt:${c.reset} ${promptFile}`);
   if (fs.existsSync(promptFile)) {
@@ -275,10 +416,10 @@ if (command === 'help') {
     console.error('Usage: agential-skill add <preset-name>');
     process.exit(1);
   }
-  addPreset(presetName, targetDir);
+  addPreset(presetName, targetDir, themeChoice);
 } else if (isNonInteractive) {
-  printBanner();
+  printBanner(themeChoice);
   installSkill(targetDir, ['all']);
 } else {
-  promptInteractive(targetDir);
+  promptInteractive(targetDir, themeChoice);
 }
