@@ -76,21 +76,7 @@ Installs rules and adapters for Claude Code, Antigravity, VS Code, and Cursor in
 npx agential-skill init -y
 ```
 
-### 3. Color Theme Variations
-Agential Skill CLI ships with 5 architectural TrueColor gradients:
-```bash
-# Preview all 5 color palettes in your terminal
-npx agential-skill themes
-
-# Launch with your preferred theme
-npx agential-skill --theme=violet    # Brutalist Ultraviolet (Default)
-npx agential-skill --theme=cyan      # Electric Blueprint
-npx agential-skill --theme=emerald   # Matrix Mint
-npx agential-skill --theme=amber     # Solar Monolith
-npx agential-skill --theme=crimson   # Vogue Scarlet
-```
-
-### 4. Framework Presets
+### 3. Framework Presets
 Add framework-specific guidelines (component patterns, server/client splits):
 ```bash
 # React 19 & Next.js 15+ App Router
@@ -100,7 +86,7 @@ npx agential-skill add react-nextjs
 npx agential-skill add vue-nuxt
 ```
 
-### 5. Web LLMs (ChatGPT / Claude Web)
+### 4. Web LLMs (ChatGPT / Claude Web)
 Display and copy the standalone single-prompt instructions:
 ```bash
 npx agential-skill prompt
@@ -114,8 +100,6 @@ npx agential-skill prompt
 |:---|:---|
 | `npx agential-skill init` | Launch interactive setup wizard with arrow-key navigation |
 | `npx agential-skill init -y` | Non-interactive auto-install for all supported agents |
-| `npx agential-skill themes` | Preview all 5 terminal TrueColor palette variations |
-| `npx agential-skill --theme=<name>` | Run CLI with a specific theme (`violet`, `cyan`, `emerald`, `amber`, `crimson`) |
 | `npx agential-skill add <preset>` | Add tech stack preset (`react-nextjs`, `vue-nuxt`) |
 | `npx agential-skill prompt` | View standalone prompt path for web interfaces |
 | `npx agential-skill --help` | View complete CLI flags and options |
