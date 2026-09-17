@@ -2,7 +2,7 @@
 
 # Agential Skill
 
-### Editorial Web & UI Design System for Claude Code, Antigravity, and VS Code.
+### Autonomous Frontend Architecture & Editorial Design Engine for AI Agents
 
 [![npm](https://img.shields.io/npm/v/agential-skill.svg?style=flat&color=171717)](https://www.npmjs.com/package/agential-skill)
 [![license](https://img.shields.io/badge/license-MIT-171717.svg?style=flat)](./LICENSE)
@@ -13,39 +13,138 @@ Specialized for **Claude Code** · **Google Antigravity** · **VS Code (GitHub C
 
 <br/>
 
-<p align="center">
-  <img src="./assets/demo.svg" alt="Agential Skill — workflow overview" width="760"/>
-</p>
+```text
+ ┌─ ● Welcome to Agential Skill (v1.0.2) ──────────────────────────────┐
+ │  Autonomous Frontend Architecture & Design Engine                     │
+ └───────────────────────────────────────────────────────────────────────┘
+
+  █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ █████╗ ██╗     
+ ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔══██╗██║     
+ ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║███████║██║     
+ ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██╔══██║██║     
+ ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║██║  ██║███████╗
+ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝
+ ███████╗██╗  ██╗██╗██╗     ██╗     
+ ██╔════╝██║ ██╔╝██║██║     ██║     
+ ███████╗█████╔╝ ██║██║     ██║     
+ ╚════██║██╔═██╗ ██║██║     ██║     
+ ███████║██║  ██╗██║███████╗███████╗
+ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+ ───────────────────────────────────────────────────────────────────────
+  Version: v1.0.2  │  Supports: Claude Code · Google Antigravity · VS Code
+ ───────────────────────────────────────────────────────────────────────
+```
 
 </div>
 
 <br/>
 
-## What This Does
+## Quickstart
 
-AI models default to dated aesthetics, break existing code on edit, and overwhelm non-technical users with jargon. Agential Skill is a model-agnostic instruction set that corrects all three problems by enforcing a disciplined, five-step workflow on every turn.
+Run one command in the root of your project:
 
-The skill ships as a single `SKILL.md` spec with platform-specific adapters. Install once; every AI session inherits the same design system, the same review discipline, and the same communication standard.
+```bash
+npx agential-skill init
+```
+
+Use **`↑` / `↓` Arrow Keys** to choose your platform, press **`Enter`** to install, and your agent will automatically inherit the standard immediately.
+
+```bash
+Choose your AI platform / editor: (Use ↑/↓ arrows, Enter to select, or 1-5)
+
+  ❯ [1] Core Trio (Claude + Antigravity + VS Code) - (Recommended)
+    [2] Claude Code (CLAUDE.md)
+    [3] Google Antigravity & Gemini CLI (.agents & AGENTS.md)
+    [4] VS Code (.github/copilot-instructions.md)
+    [5] Export Standalone Prompt for Web LLMs
+```
 
 ---
 
-## Install
+## CLI Installation & Usage
 
+### 1. Interactive Setup (Arrow Navigation)
+Navigate through options with live keyboard arrows and confirm with `Enter`:
 ```bash
-# Auto-configure for all platforms:
-npx agential-skill init -y
-
-# Interactive wizard:
 npx agential-skill init
-
-# Direct from GitHub (no npm):
-npx github:talhairfandev/agential-skill init -y
 ```
 
-Or via one-line scripts:
+### 2. Automated Install (Zero-Prompt CI/All Platforms)
+Installs rules and adapters for Claude Code, Antigravity, VS Code, and Cursor in 1 second:
+```bash
+npx agential-skill init -y
+```
 
-- **Windows (PowerShell):** `irm https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.ps1 | iex`
-- **macOS / Linux:** `curl -fsSL https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.sh | bash`
+### 3. Color Theme Variations
+Agential Skill CLI ships with 5 architectural TrueColor gradients:
+```bash
+# Preview all 5 color palettes in your terminal
+npx agential-skill themes
+
+# Launch with your preferred theme
+npx agential-skill --theme=violet    # Brutalist Ultraviolet (Default)
+npx agential-skill --theme=cyan      # Electric Blueprint
+npx agential-skill --theme=emerald   # Matrix Mint
+npx agential-skill --theme=amber     # Solar Monolith
+npx agential-skill --theme=crimson   # Vogue Scarlet
+```
+
+### 4. Framework Presets
+Add framework-specific guidelines (component patterns, server/client splits):
+```bash
+# React 19 & Next.js 15+ App Router
+npx agential-skill add react-nextjs
+
+# Vue 3 & Nuxt 3
+npx agential-skill add vue-nuxt
+```
+
+### 5. Web LLMs (ChatGPT / Claude Web)
+Display and copy the standalone single-prompt instructions:
+```bash
+npx agential-skill prompt
+```
+
+---
+
+## CLI Command Reference
+
+| Command | Description |
+|:---|:---|
+| `npx agential-skill init` | Launch interactive setup wizard with arrow-key navigation |
+| `npx agential-skill init -y` | Non-interactive auto-install for all supported agents |
+| `npx agential-skill themes` | Preview all 5 terminal TrueColor palette variations |
+| `npx agential-skill --theme=<name>` | Run CLI with a specific theme (`violet`, `cyan`, `emerald`, `amber`, `crimson`) |
+| `npx agential-skill add <preset>` | Add tech stack preset (`react-nextjs`, `vue-nuxt`) |
+| `npx agential-skill prompt` | View standalone prompt path for web interfaces |
+| `npx agential-skill --help` | View complete CLI flags and options |
+
+---
+
+## Alternative Install Scripts
+
+If you prefer installing directly without `npm`/`npx`:
+
+- **Windows (PowerShell):**
+  ```powershell
+  irm https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.ps1 | iex
+  ```
+- **macOS / Linux (Bash):**
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/talhairfandev/agential-skill/main/scripts/install.sh | bash
+  ```
+
+---
+
+## What This Does
+
+AI coding models often generate dated SaaS UI (rounded cards, washed-out blue subtitles, generic templates), break existing code on edits, and forget design guidelines across chat sessions.
+
+Agential Skill fixes this at the root by providing a universal specification (`SKILL.md`) and platform-native rule adapters that enforce:
+- **Swiss Architectural Editorial & Brutalist Luxury**: Zero border-radius (`rounded-none`), hairline wireframes (1px dividers), colossal display typography paired with microscopic utility labels, and archival index rows (the Anti-Card Ledger system).
+- **Session Memory (`context.md`)**: Automatically updates and reads project state across restarts.
+- **Mandatory Post-Edit Verification**: Syntax, import integrity, contrast ratios, and zero regressions checked on every edit.
 
 ---
 
