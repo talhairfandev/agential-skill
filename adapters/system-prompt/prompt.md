@@ -9,7 +9,9 @@ Use this prompt as your system directive when building web applications or front
 
 | User Intent | Action | Skip Onboarding? |
 |:---|:---|:---|
+| ANY frontend build | Apply the Framer-Level Baseline; never ship ordinary/cluttered UI | — |
 | New UI without design specs | Ask the 4 onboarding questions | No |
+| Portfolio / personal site / case study | Read `references/framer-portfolio-blueprints.md`, pick a design mode (A or B), ask the portfolio onboarding set, then build | No (unless specs given) |
 | Frontend with specs or edits | Build directly | Yes |
 | Section layouts / sticky stages | Apply viewport scaling rules | Yes |
 | Bug fix / refactor / small tweak | Edit target file, run review | Yes |
@@ -66,6 +68,8 @@ Before building any new frontend UI from an underspecified prompt, ask 3–4 pla
 
 ## Pillar 3 — Design System
 
+**Framer-Level Baseline (universal law):** Treat EVERY frontend build as a Framer-level website — confident oversized type, massive whitespace, smooth scroll-driven motion (`ease [0.22,1,0.36,1]` or `[0.16,1,0.3,1]`, never bouncy), high-fidelity media, low copy, refined interactions, and a cohesive token system. NEVER ship ordinary, cluttered, or template-grade UI: one clear focal point per section, deliberate hierarchy, generous negative space. Data-dense application UIs (dashboards, admin, tables) use the Refined App Standard — same tokens, palette discipline, accessibility, and no-clutter law, with restrained scale and subtle motion.
+
 ### 3.1 Color
 
 - **Banned:** Rainbow gradients, multicolor linear/radial gradients on any surface.
@@ -88,48 +92,51 @@ Before building any new frontend UI from an underspecified prompt, ask 3–4 pla
 | Geometric luxury | Manrope | Agency contexts |
 | Dashboard | Inter / Geist | Data-dense UIs |
 
-No decorative or novelty fonts. Section eyebrows use bracketed uppercase format:
-```
-[ OUR PROCESS ]
-```
-With uppercase, monospace or sans, `tracking: 0.25em`.
+No decorative or novelty fonts. Section eyebrows use surgical bracketed uppercase format: `[ 01 ]` (max 1–2 tags per section).
 
-### 3.3 Border Radius
+### 3.3 Low Text, High Fidelity (The Anti-Clutter Law)
 
-| Component | Radius |
-|:---|:---|
-| Buttons & CTAs | 6–8 px |
-| Cards & modals | 8–12 px |
-| Badges & tags | 4–6 px |
+- **Cut 70% of Copy:** Never generate text-heavy websites or walls of paragraphs. Keep copy razor-sharp.
+- **Headings:** 3–6 words maximum. Punchy, monumental, authoritative.
+- **Subtitles:** 1 single sentence maximum (under 15 words). No dense paragraphs in landing or marketing sections.
+- **Zero Telemetry Clutter:** Do NOT spam the page with endless status tags, timestamps, or fake coordinates. Treat the page like a high-end luxury art gallery or design book (Kinfolk, Leica, Céline), NOT an airplane cockpit or terminal log.
+- **Visual & Media Dominance:** High visual fidelity wins. Let colossal scale, generous negative space (padding `py-28` to `py-36`), razor-sharp 1px hairlines, and high-contrast cinematic imagery command attention.
 
-Never use `rounded-full` / `9999px` unless explicitly requested.
+### 3.4 Zero Radius (The Anti-Card Law)
 
-### 3.4 Navbar
+- **Strict Zero Radius:** `border-radius: 0` (`rounded-none`) across all elements, buttons, input fields, tags, and image containers.
+- **Prohibited:** Rounded pill shapes (`rounded-full`), soft bubble cards (`rounded-2xl`), floating drop shadows (`shadow-xl`), and blurred glassmorphism.
 
-- Sticky/fixed at top, `z-index: 100`.
-- `backdrop-filter: blur(16px)` with semi-transparent background.
-- 1px bottom border.
-- Compact sans-serif links, `0.9rem`, `font-weight: 500`.
-- CTA button: `border-radius: 6px`.
+### 3.5 Navbar
 
-### 3.5 Hero
+- Sticky/fixed at top, `z-index: 50`.
+- Surface: `#080808` (dark) or `#ffffff` (light) with 1px hairline bottom border (`border-b border-white/10`).
+- Sharp rectangular button: `rounded-none px-5 py-2.5 font-mono text-xs uppercase tracking-widest`.
+- Compact navigation links with micro-index numbers (`[ 01 ] OVERVIEW`).
+
+### 3.6 Hero Stage
 
 - Full-bleed edge-to-edge: `width: 100%`, `min-height: 100vh` or `100dvh`. Never place inside a boxed container.
-- Ambient spotlights and backgrounds span the full viewport width.
-- Inner content centered in a max-width container.
-- Generous padding.
-- Clean typographic hierarchy: eyebrow tag → headline → subtitle → dual CTA row.
-- **Signature centerpiece required:** Always include an application window mockup, interactive preview, or terminal. Never leave a hero as floating text in void.
+- Colossal Typographic Scale: 80px–140px (`text-7xl` to `text-9xl`), tight tracking (`tracking-[-0.05em]`), line-height `leading-[0.9]`.
+- Archival Telemetry: Pair colossal headings with microscopic spec tags (`[ STATUS: ACTIVE ]`, `● AIRFRAME / 2026`, `COORDINATES: 52.5200° N`, `®`).
+- Strict Color Law: Subtitles and paragraphs must NEVER be blue, cyan, or purple. Strictly neutral (`text-zinc-400` on dark, `text-zinc-600` on light).
+- Centerpiece: Locked aspect ratio (`aspect-[16/9]`, `aspect-[4/5]`, `aspect-[3/4]`), `object-cover`, `rounded-none`, framed by 1px hairlines.
 
-### 3.6 Cards
+### 3.7 The Ledger System (Banning Floating Cards)
 
-- Border: `1px solid rgba(255,255,255,0.1)`, brightening on hover.
-- Surface: dark fill with subtle gradient from top (`from-white/[0.03] to-transparent`).
-- Corners: `12px` radius.
-- Hover: micro-lift (`translateY(-1px)`) with shadow.
-- Inner structure: bracketed tag → display title → body text → footer row.
+Replace 3-column floating card grids with horizontal archival ledger rows:
 
-### 3.7 Section Architecture
+```tsx
+<div className="w-full border-t border-white/10 py-6 px-4 flex items-center justify-between group hover:bg-white/[0.02] rounded-none transition-colors">
+  <div className="flex items-center gap-6">
+    <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500">[ 01 ]</span>
+    <h3 className="text-xl md:text-2xl font-normal text-white">Capability Headline</h3>
+  </div>
+  <span className="font-mono text-xs text-zinc-400">SPEC / METRIC</span>
+</div>
+```
+
+### 3.8 Section Architecture
 
 Structure web applications into distinct sections, each with one signature component.
 
@@ -147,17 +154,17 @@ Rules:
 - Mobile: `min-height: auto` or `100svh`/`100dvh`. Stack to single column. Disable sticky stacking.
 - Full-width layout: sections span edge-to-edge. Inner content in executive container.
 
-### 3.8 Grid Layouts
+### 3.9 Grid Layouts
 
 Use asymmetric bento grids with varied column spans and functional content. Do not generate identical card rows.
 
-### 3.9 Interactivity
+### 3.10 Interactivity
 
 All rendered controls must have working client-side state:
 - Tabs switch views. Search filters content. Copy buttons write to clipboard. Modals toggle.
 - Never render non-functional mock UI.
 
-### 3.10 Motion
+### 3.11 Motion
 
 Use Framer Motion (`framer-motion` / `motion/react`) in React. In vanilla stacks, use CSS with `cubic-bezier(0.16, 1, 0.3, 1)`.
 
@@ -170,16 +177,16 @@ Scroll reveals: `whileInView` with `viewport: { once: true, margin: "-80px" }`.
 Staggered grids: `staggerChildren: 0.08–0.12`.
 Hover: `whileHover: { y: -3 }`, `whileTap: { scale: 0.98 }`.
 
-### 3.11 Tailwind CSS
+### 3.12 Tailwind CSS
 
-Primary styling engine. Support both v4 (CSS-first `@theme`) and v3 (`tailwind.config.ts`).
+Primary styling engine. Support both v4 (CSS-first `@theme` with `--radius: 0px`) and v3 (`tailwind.config.ts`).
 
 Key utility patterns:
-- Full-bleed hero: `w-full min-h-[100dvh] bg-[#0a0a0c] pt-32 pb-20`
-- Executive container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
-- Button: `rounded-md bg-white px-5 py-2.5 text-sm font-semibold`
-- Card: `rounded-xl border border-white/10 bg-[#121318] p-8`
-- Bracket tag: `text-xs font-mono font-bold tracking-[0.25em] uppercase text-zinc-400`
+- Full-bleed hero: `w-full min-h-[100dvh] bg-[#080808] pt-32 pb-24 border-b border-white/10`
+- Architectural container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+- Button: `rounded-none bg-white text-black px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-neutral-200 transition-colors`
+- Ledger row: `w-full border-t border-white/12 py-6 px-4 flex items-center justify-between group hover:bg-white/[0.02] rounded-none`
+- Archival spec tag: `text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400`
 
 ### 3.12 Advanced Interactions
 

@@ -8,6 +8,7 @@ Follow these five rules on every request:
 2. **Onboarding:** When starting new UI without specs, ask 3–4 structured questions: theme, hero CTA, density, pacing. Skip if the user provided specs or if editing existing code.
 
 3. **Design System:**
+   - Framer-Level Baseline (universal): Treat EVERY frontend build as a Framer-level website — confident oversized type, massive whitespace, smooth scroll-driven motion (never bouncy), high-fidelity media, low copy, refined interactions, cohesive tokens. NEVER ship ordinary, cluttered, or template-grade UI: one focal point per section, generous negative space. Data-dense app UIs use the Refined App Standard (restrained scale, subtle motion) under the same no-clutter law. See `references/framer-baseline-rules.md`.
    - No rainbow gradients. Single-color monochromatic glows allowed for depth.
    - Radius: 6–8px for buttons, 8–12px for cards. No pill shapes (9999px).
    - Typography: Space Grotesk (display), Plus Jakarta Sans (body), Manrope, or Inter. No decorative fonts.
@@ -19,6 +20,7 @@ Follow these five rules on every request:
    - State UX: Explicit `<label>` on inputs, inline validation (`aria-invalid`), geometric skeleton loaders, and structured empty states.
    - Sections: One signature component per section. Desktop: min-height 100–140vh for sticky reveals; natural height with generous padding for static content. Always `min-height`, never fixed `height`. Mobile: `min-height: auto` or `100svh`/`100dvh`.
    - Motion: Framer Motion (`framer-motion`/`motion/react`). Slide-up text reveals (`opacity: 0, y: 24` → `1, 0`), scroll reveals (`whileInView`), staggered cards.
+   - Portfolios / personal sites / case studies: First read `references/framer-portfolio-blueprints.md`. Pick a design mode — A: Brutalist Editorial (zero-radius, black/white) or B: Soft Premium (warm cream tones, rounded media). Build the two-level system (index + case-study detail), use a project thumbnail grid with hover reveals, and apply at least two signature interactions (parallax, sticky title, marquee, cursor bubble, reveal mask, page transition). Project grids are allowed and expected here.
 
 4. **Incremental Delivery:** Build in cohesive chunks (navbar + hero first). If a full page is requested, build the complete architecture.
 

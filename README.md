@@ -13,28 +13,9 @@ Specialized for **Claude Code** · **Google Antigravity** · **VS Code (GitHub C
 
 <br/>
 
-```text
- ┌─ ● Welcome to Agential Skill (v1.0.2) ──────────────────────────────┐
- │  Autonomous Frontend Architecture & Design Engine                     │
- └───────────────────────────────────────────────────────────────────────┘
-
-  █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ █████╗ ██╗     
- ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔══██╗██║     
- ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║███████║██║     
- ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██╔══██║██║     
- ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║██║  ██║███████╗
- ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝
- ███████╗██╗  ██╗██╗██╗     ██╗     
- ██╔════╝██║ ██╔╝██║██║     ██║     
- ███████╗█████╔╝ ██║██║     ██║     
- ╚════██║██╔═██╗ ██║██║     ██║     
- ███████║██║  ██╗██║███████╗███████╗
- ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
-
- ───────────────────────────────────────────────────────────────────────
-  Version: v1.0.2  │  Supports: Claude Code · Google Antigravity · VS Code
- ───────────────────────────────────────────────────────────────────────
-```
+<p align="center">
+  <img src="./assets/terminal-banner.svg" alt="Agential Skill Terminal" width="740"/>
+</p>
 
 </div>
 
@@ -196,7 +177,9 @@ agential-skill/
 ├── references/
 │   ├── accessibility-standards.md    # WCAG 2.1 AA checklist & patterns
 │   ├── form-and-feedback-ux.md       # Form validation, skeletons, empty states
+│   ├── framer-baseline-rules.md      # Universal Framer-level law for ALL frontend (+ dense-UI standard)
 │   ├── framer-design-system.md       # Design system specification
+│   ├── framer-portfolio-blueprints.md # Portfolio architecture, modes & signature interactions
 │   ├── premium-section-benchmarks.md # Section archetype catalogue
 │   ├── questioning-framework.md      # Onboarding question guide
 │   ├── context-protocol.md           # Memory persistence protocol

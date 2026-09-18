@@ -56,7 +56,7 @@ const BANNER_SKILL = [
 
 function printBanner() {
   console.log('');
-  console.log(c.border + ' ┌─ ' + c.dot + '●' + c.reset + ' ' + c.white + 'Welcome to Agential Skill' + c.reset + c.dim + ' (v' + PKG.version + ')' + c.border + ' ──────────────────────────────┐' + c.reset);
+  console.log(c.border + ' ┌─ ' + c.dot + '●' + c.reset + ' ' + c.white + 'Welcome to Agential Skill' + c.reset + c.dim + ' (v' + PKG.version + ')' + c.border + ' ────────────────────────────────┐' + c.reset);
   console.log(c.border + ' │  ' + c.sub + 'Autonomous Frontend Architecture & Design Engine                     ' + c.border + '│' + c.reset);
   console.log(c.border + ' └───────────────────────────────────────────────────────────────────────┘' + c.reset);
   console.log('');
@@ -198,7 +198,8 @@ function installSkill(targetDir, targets = ['all']) {
 
   results.forEach((msg) => console.log(`  ${c.green}[OK]${c.reset} ${msg}`));
   console.log(`\n${c.green}${c.bold}Agential Skill successfully installed.${c.reset}`);
-  console.log(`${c.dim}Connected AI agents (Cursor, Claude, Copilot, Windsurf, Antigravity) will now automatically enforce this standard.${c.reset}\n`);
+  console.log(`${c.dim}Connected AI agents (Claude, Antigravity, VS Code, Cursor, Windsurf) will now automatically enforce this standard.${c.reset}`);
+  console.log(`\n${c.bold}Next step:${c.reset} Ask your agent: ${c.white}"Review AGENTS.md and summarize our design tokens"${c.reset}\n`);
 }
 
 const MENU_OPTIONS = [
@@ -247,9 +248,23 @@ function promptInteractive(targetDir) {
   }
   process.stdin.resume();
 
+  function cleanup() {
+    process.stdin.removeListener('keypress', onKeypress);
+    if (process.stdin.isTTY) {
+      process.stdin.setRawMode(false);
+    }
+    process.stdout.write('\x1b[?25h');
+  }
+
   function onKeypress(str, key) {
     if (key && key.ctrl && key.name === 'c') {
-      process.stdout.write('\x1b[?25h');
+      cleanup();
+      process.exit(0);
+    }
+
+    if (key && (key.name === 'q' || key.name === 'escape')) {
+      cleanup();
+      console.log(`\n${c.dim}Installation cancelled.${c.reset}\n`);
       process.exit(0);
     }
 
@@ -259,42 +274,31 @@ function promptInteractive(targetDir) {
     } else if (key && (key.name === 'down' || key.name === 'j')) {
       selectedIndex = (selectedIndex + 1) % MENU_OPTIONS.length;
       renderMenu(false);
-    } else if (key && (key.name === 'return' || key.name === 'enter')) {
+    } else if (key && (key.name === 'return' || key.name === 'enter' || key.name === 'space')) {
+      cleanup();
       confirmChoice(selectedIndex);
     } else if (str && ['1', '2', '3', '4', '5'].includes(str)) {
       selectedIndex = parseInt(str, 10) - 1;
-      renderMenu(false);
+      cleanup();
       confirmChoice(selectedIndex);
     }
   }
 
   function confirmChoice(idx) {
-    process.stdin.removeListener('keypress', onKeypress);
-    if (process.stdin.isTTY) {
-      process.stdin.setRawMode(false);
-    }
-    process.stdout.write('\x1b[?25h');
     console.log('');
-
     const chosenOption = MENU_OPTIONS[idx];
     if (chosenOption.key === '5') {
       const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
-      console.log(`\n${c.green}Standalone prompt location:${c.reset} ${promptFile}`);
-      console.log(`${c.dim}Copy the content of this file and paste it into ChatGPT or Claude Custom Instructions.${c.reset}\n`);
+      const destPrompt = path.join(targetDir, 'agential-prompt.md');
+      fs.copyFileSync(promptFile, destPrompt);
+      console.log(`  ${c.green}[OK]${c.reset} Standalone prompt exported to: ${c.bold}${destPrompt}${c.reset}`);
+      console.log(`  ${c.dim}Copy and paste into ChatGPT, Claude, or any web LLM instructions.${c.reset}\n`);
       process.exit(0);
       return;
     }
 
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-
-    rl.question(`${c.dot}Target directory path (default: ${targetDir}): ${c.reset}`, (dirAnswer) => {
-      rl.close();
-      const finalDir = dirAnswer.trim() ? path.resolve(dirAnswer.trim()) : targetDir;
-      installSkill(finalDir, chosenOption.targets);
-    });
+    // Direct installation into target directory immediately
+    installSkill(targetDir, chosenOption.targets);
   }
 
   process.stdin.on('keypress', onKeypress);
@@ -329,7 +333,10 @@ let presetName = null;
 
 for (let i = 0; i < rawArgs.length; i++) {
   const arg = rawArgs[i];
-  if (arg === '-y' || arg === '--yes' || arg === '--all' || arg === '-a') {
+  if (arg === '-v' || arg === '--version') {
+    console.log(`v${PKG.version}`);
+    process.exit(0);
+  } else if (arg === '-y' || arg === '--yes' || arg === '--all' || arg === '-a' || arg === 'all') {
     isNonInteractive = true;
   } else if (arg === '-d' || arg === '--dir' || arg === '--target') {
     targetDir = path.resolve(rawArgs[++i] || '.');
@@ -355,19 +362,22 @@ if (!process.stdin.isTTY && command === 'init') {
 if (command === 'help') {
   printBanner();
   console.log(`Usage:
+  npx agential-skill                  Interactive setup for your workspace
   npx agential-skill init             Interactive setup for your workspace
-  npx agential-skill init -y          Automated, non-interactive install for all platforms
+  npx agential-skill all              Automated install for all platforms (CI/non-interactive)
+  npx agential-skill init -y          Automated install for all platforms
   npx agential-skill add <preset>     Add framework preset (react-nextjs, vue-nuxt)
-  npx agential-skill prompt           Show standalone system prompt location
-  npx agential-skill --help           Display help message
+  npx agential-skill prompt           Export standalone prompt to ./agential-prompt.md
+  npx agential-skill -v, --version    Display version number
+  npx agential-skill -h, --help       Display help message
 `);
 } else if (command === 'prompt') {
   printBanner();
   const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
-  console.log(`${c.green}Standalone system prompt:${c.reset} ${promptFile}`);
-  if (fs.existsSync(promptFile)) {
-    console.log(`\n${fs.readFileSync(promptFile, 'utf-8').slice(0, 500)}...\n`);
-  }
+  const destPrompt = path.join(targetDir, 'agential-prompt.md');
+  fs.copyFileSync(promptFile, destPrompt);
+  console.log(`  ${c.green}[OK]${c.reset} Exported standalone prompt to: ${c.bold}${destPrompt}${c.reset}`);
+  console.log(`  ${c.dim}Copy and paste into ChatGPT, Claude, or any web LLM instructions.${c.reset}\n`);
 } else if (command === 'add') {
   if (!presetName) {
     console.error('Usage: agential-skill add <preset-name>');

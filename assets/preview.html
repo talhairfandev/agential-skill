@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agential Skill — Terminal Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #09090b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .window {
+    background: #09090b;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+    display: inline-block;
+  }
+  .titlebar {
+    background: #121215;
+    padding: 11px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #1f1f23;
+  }
+  .dots {
+    display: flex;
+    gap: 7px;
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #ef4444; opacity: 0.9; }
+  .dot-yellow { background: #f59e0b; opacity: 0.9; }
+  .dot-green { background: #10b981; opacity: 0.9; }
+  .title {
+    margin-left: 14px;
+    color: #71717a;
+    font-size: 11px;
+    font-family: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  }
+  .terminal-body {
+    padding: 24px 30px;
+    background: #09090b;
+    font-family: "JetBrains Mono", "Cascadia Code", "Cascadia Mono", Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    white-space: pre;
+    -webkit-font-smoothing: antialiased;
+  }
+  .cmd-line {
+    color: #71717a;
+    margin-bottom: 18px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .cmd-prompt { color: #10b981; font-weight: bold; }
+  .cmd-path { color: #38bdf8; }
+  .cmd-text { color: #f4f4f5; font-weight: bold; }
+
+  .top-box {
+    color: #581c87;
+    margin-bottom: 14px;
+  }
+  .top-box .dot-glow {
+    color: #c084fc;
+  }
+  .top-box .title-text {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .top-box .version-tag {
+    color: #71717a;
+  }
+  .top-box .sub-text {
+    color: #d8b4fe;
+  }
+  .banner {
+    margin-bottom: 14px;
+  }
+  .l0 { color: #7e22ce; }
+  .l1 { color: #9333ea; }
+  .l2 { color: #a855f7; }
+  .l3 { color: #c084fc; }
+  .l4 { color: #d8b4fe; }
+  .l5 { color: #e9d5ff; }
+  
+  .footer {
+    color: #3f3f46;
+    margin-bottom: 20px;
+  }
+  .footer-meta {
+    color: #71717a;
+  }
+  .footer-meta .val {
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .interactive-section {
+    line-height: 1.45;
+  }
+  .prompt-title {
+    color: #f4f4f5;
+    font-weight: bold;
+  }
+  .prompt-sub {
+    color: #71717a;
+  }
+  .menu-active {
+    color: #c084fc;
+    font-weight: bold;
+  }
+  .menu-active .check {
+    color: #a855f7;
+  }
+  .menu-item {
+    color: #a1a1aa;
+  }
+  .menu-item .dim {
+    color: #52525b;
+  }
+  .status-line {
+    margin-top: 14px;
+    color: #52525b;
+    font-size: 11.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="window">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+    </div>
+    <div class="title">agential-skill — v1.0.2</div>
+  </div>
+
+  <div class="terminal-body"><div class="cmd-line"><span class="cmd-prompt">~/my-project</span> <span class="cmd-path">on</span> <span class="cmd-prompt">main</span> <span class="cmd-text">$ npx agential-skill</span></div><div class="top-box"> ┌─ <span class="dot-glow">●</span> <span class="title-text">Welcome to Agential Skill</span> <span class="version-tag">(v1.0.2)</span> ────────────────────────────────┐
+ │  <span class="sub-text">Autonomous Frontend Architecture &amp; Design Engine</span>                     │
+ └───────────────────────────────────────────────────────────────────────┘</div><div class="banner"><span class="l0">  █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ █████╗ ██╗     </span>
+<span class="l1"> ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔══██╗██║     </span>
+<span class="l2"> ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║███████║██║     </span>
+<span class="l3"> ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██╔══██║██║     </span>
+<span class="l4"> ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║██║  ██║███████╗</span>
+<span class="l5"> ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝</span>
+<span class="l0"> ███████╗██╗  ██╗██╗██╗     ██╗     </span>
+<span class="l1"> ██╔════╝██║ ██╔╝██║██║     ██║     </span>
+<span class="l2"> ███████╗█████╔╝ ██║██║     ██║     </span>
+<span class="l3"> ╚════██║██╔═██╗ ██║██║     ██║     </span>
+<span class="l4"> ███████║██║  ██╗██║███████╗███████╗</span>
+<span class="l5"> ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝</span></div><div class="footer"> ───────────────────────────────────────────────────────────────────────
+<span class="footer-meta">  Version: <span class="val">v1.0.2</span>  │  Supports: <span class="val">Claude Code</span> · <span class="val">Google Antigravity</span> · <span class="val">VS Code</span></span>
+ ───────────────────────────────────────────────────────────────────────</div><div class="interactive-section"> <span class="prompt-title">Select AI Agent / IDE targets to install:</span>
+ <span class="prompt-sub">(Use arrow keys or 1-5, Space/Enter to toggle/confirm, 'a' to select all)</span>
+
+ <span class="menu-active">❯ <span class="check">●</span> [1] Google Antigravity <span class="dim">(.agents/skills &amp; .agents/rules)</span></span>
+ <span class="menu-item">  ○ [2] Claude Code <span class="dim">(CLAUDE.md &amp; prompt)</span></span>
+ <span class="menu-item">  ○ [3] Universal Agent Standard <span class="dim">(AGENTS.md)</span></span>
+ <span class="menu-item">  ○ [4] Cursor IDE <span class="dim">(.cursorrules &amp; .cursor/rules)</span></span>
+ <span class="menu-item">  ○ [5] GitHub Copilot <span class="dim">(.github/copilot-instructions.md)</span></span>
+
+<span class="status-line"> [Enter] Install Selected    [a] Select All    [q] Quit</span></div>
+  </div>
+</div>
+
+</body>
+</html>
