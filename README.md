@@ -5,7 +5,17 @@
 ### Autonomous Frontend Architecture & Editorial Output Design Engine for Coding Assistants
 
 [![npm](https://img.shields.io/npm/v/agential-skill.svg?style=flat&color=171717)](https://www.npmjs.com/package/agential-skill)
-[![license](https://img.shields.io/badge/license-MIT-171717.svg)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-171717.svg?style=flat)](./LICENSE)
+
+<br/>
+
+Specialized for **Claude Code** · **Google Antigravity** · **VS Code (GitHub Copilot)**
+
+<br/>
+
+<p align="center">
+  <img src="./assets/terminal-banner.svg" alt="Agential Skill Terminal" width="740"/>
+</p>
 
 </div>
 
