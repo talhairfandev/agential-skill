@@ -1,309 +1,101 @@
 ---
 name: agential-skill
 description: >-
-  Use this skill when the user asks to build, design, code, refactor, debug, review, style, or optimize any website, web application, frontend UI, component, layout, or page. Enforces persistent memory (context.md), structured onboarding questions for new UI, a strict design system (solid colors, clean typography, minimal radius, viewport-scale section architecture, motion), incremental delivery, and mandatory post-edit review.
+  Use this skill for any website, web application, frontend UI, component, layout,
+  styling, refactor, or review. It enforces a self-contained editorial output
+  standard: image-first composition, oversized typography, visible hairline grids,
+  hard-edged rectangular framing, restrained copy, and review.
 ---
 
-# Agential Skill — Specification
-**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
+# Agential Skill — Editorial Output Specification
 
-A model-agnostic skill that enforces a disciplined five-step workflow for frontend and UI development. Produces clean, consistent, well-reviewed code with a strict visual standard.
+This is the canonical instruction set. It prevents generic SaaS output by making the desired visual language part of the default result, regardless of framework, platform, or agent.
 
----
+## The Default Visual Language
 
-## FRAMER-LEVEL BASELINE (UNIVERSAL LAW — APPLIES TO EVERY FRONTEND REQUEST)
+Produce minimal editorial interfaces with:
 
-Treat **every** frontend build as a Framer-level website by default: confident oversized type, massive whitespace, smooth scroll-driven motion, high-fidelity media, low copy, refined interactions, and a cohesive token system. **Ordinary, cluttered, or template-grade UI is never acceptable output.** One clear focal point per section, deliberate hierarchy, generous negative space — curation over accumulation.
+- Image-led, full-bleed compositions where photography or texture carries the emotional weight.
+- Oversized neutral grotesque typography that crops, overlaps, or sits directly on the image.
+- Hard-edged rectangular frames, visible 1px construction lines, crosshairs, columns, and section seams.
+- Small navigation, labels, dates, and captions contrasted against one dominant title or image.
+- Black, white, charcoal, cream, and selective vermilion/red/orange. Accent color is intentional, not decorative noise.
+- Editorial pacing: one visual idea per section, generous empty space, short copy, and strong transitions between planes.
 
-Data-dense application UIs (dashboards, admin, tables) follow the **Refined App Standard** (same tokens, palette discipline, accessibility, and no-clutter law, with restrained scale and subtle motion). This baseline governs all other references.
+The visual grammar is embedded here. Do not depend on external mood boards, asset folders, or image-inspection steps to produce it.
 
-**Full ruleset (mandatory read for any frontend work): [`references/framer-baseline-rules.md`](./references/framer-baseline-rules.md).**
+## Anti-Generic Rules
 
----
+1. **Use hard-edged geometry.** Controls, media, fields, dialogs, tags, and layout frames are rectangular and architectural. Avoid soft corners, pills, capsules, circular UI, and ornamental shapes.
+2. **No floating card UI.** Do not create card grids, bento tiles, dashboard widget piles, feature cards, glass panels, or elevated panels. Use flat editorial planes, image frames, asymmetric columns, or ledger rows divided by hairlines.
+3. **No shadows or glass.** Do not use drop shadows, glow clouds, backdrop blur, translucent frosted surfaces, or soft depth effects.
+4. **No decorative gradients.** Do not use rainbow, mesh, aurora, or gradient washes. Use solid black, white, charcoal, cream, red, or orange fields and real image texture.
+5. **No template composition.** Reject centered SaaS hero copy followed by three equal feature blocks, icon boxes, pricing grids, testimonial carousels, or generic dashboard chrome.
+6. **No visual clutter.** One focal point per section. Remove redundant labels, chips, fake telemetry, coordinate spam, filler paragraphs, and decorative UI that does not clarify the story.
+7. **Keep body copy neutral.** Paragraphs and subtitles use neutral tones. Red/orange is reserved for large image fields, a deliberate title, a rule, or a tiny indicator.
 
-## MANDATORY PRE-FLIGHT TOOL EXECUTION (DO NOT SKIP)
-Before generating code or UI components, you MUST execute `view_file` on the corresponding reference file:
-- **ANY frontend build (always):** Read `references/framer-baseline-rules.md`
-- **Portfolios / Personal Sites / Case Studies / Selected Works:** Read `references/framer-portfolio-blueprints.md`
-- **Animations / Framer Motion:** Read `references/framer-design-system.md`
-- **Sections / Bento / Layout Architecture:** Read `references/premium-section-benchmarks.md`
-- **Forms / Loading Skeletons / State UX:** Read `references/form-and-feedback-ux.md`
-- **Accessibility & Contrast Checklist:** Read `references/accessibility-standards.md`
-DO NOT assume generic training defaults. Inspect these reference blueprints before coding.
+## Composition Grammar
 
----
+- Sections are full-bleed planes: `w-full`, natural height or `min-h-[100dvh]`; never constrain the whole page inside a floating shell.
+- Use a clear architectural container only for alignment: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
+- Build with asymmetric 12-column grids, split stages, editorial image strips, or horizontal index rows. Avoid repeated equal boxes.
+- Make structure visible with 1px black/neutral rules on light surfaces and 1px white/neutral rules on dark surfaces.
+- Use locked media ratios: `aspect-[16/9]`, `aspect-[4/5]`, or `aspect-[3/4]`; always `object-cover` and a hard-edged frame.
+- Prefer full-bleed photography, monochrome portraits, halftone/film texture, or high-contrast red/orange imagery. Never fill empty space with cartoon illustrations or floating mockups.
+- Treat image overlays as typography compositions: large type may cross the image boundary, crop at the viewport, or sit over a solid color field.
+- Use only one or two small editorial markers per section: `[ 01 ]`, a date, a short category, or `©`.
 
-## Task Routing
+### Approved Structures
 
-| User Intent | Action | Skip Onboarding? | Mandatory Pre-Flight File |
-|:---|:---|:---|:---|
-| ANY frontend build | Apply the Framer-Level Baseline; never ship ordinary/cluttered UI | — | [framer-baseline-rules.md](./references/framer-baseline-rules.md) |
-| New UI without design specs | Ask the 4 onboarding questions | No | [questioning-framework.md](./references/questioning-framework.md) |
-| Portfolio / personal site / case study | Ask the portfolio onboarding set, pick a design mode, then build | No (unless specs given) | [framer-portfolio-blueprints.md](./references/framer-portfolio-blueprints.md) |
-| Frontend with specs or edits | Build directly | Yes | [framer-design-system.md](./references/framer-design-system.md) · [DESIGN.md](./DESIGN.md) |
-| Section layouts / sticky stages | Apply viewport scaling rules | Yes | [premium-section-benchmarks.md](./references/premium-section-benchmarks.md) |
-| Forms, loading, & empty states | Apply state UX patterns | Yes | [form-and-feedback-ux.md](./references/form-and-feedback-ux.md) |
-| Accessibility audit & remediation | Apply WCAG 2.1 AA checklist | Yes | [accessibility-standards.md](./references/accessibility-standards.md) |
-| Bug fix / refactor / small tweak | Edit target file, run review | Yes | [post-edit-review-checklist.md](./references/post-edit-review-checklist.md) |
+**Split stage:** monumental title on one side; image, short sentence, or three-line metadata on the other.
 
----
+**Image/title plate:** a full-bleed image or solid color plane with one oversized title and a small utility line.
 
-## Fast Reference (For AI Assistants)
+**Wireframe matrix:** visible columns and rows with a few placed images, captions, and a large typographic anchor.
 
-| Pillar | Mandatory Action | Key Tokens & Rules |
-|:---|:---|:---|
-| **1. Memory** | Read `context.md` at start; update after milestones. | Persists across session truncations and model switches. |
-| **2. Onboarding** | Ask 4 questions before building new UI without specs. | 1. Theme, 2. Hero CTA, 3. Density, 4. Pacing. (Skip on edits). |
-| **3. Design System** | Enforce Swiss Architectural Editorial & Brutalist Luxury. | **Zero Radius:** `border-radius: 0` (`rounded-none`) across all elements, buttons, and media. Absolutely NO rounded cards or pill buttons.<br>**Low Text, High Fidelity:** Cut 70% of copy. Headings 3–6 words, subtitles 1 sentence (under 15 words). NO text walls or paragraph clutter. Curation over clutter.<br>**10:1 Typographic Tension:** Colossal titles (80px–140px, `tracking-[-0.04em]`, `leading-[0.9]`) paired with microscopic metadata (10px–11px, `tracking-[0.15em]`, mono/uppercase).<br>**Surgical Artifacts:** Add at most 1–2 subtle marks (`®`, `™`, `[ 01 ]`). Never clutter the screen with fake telemetry tags.<br>**Hairline Wireframes:** Crisp 1px borders (`border-neutral-200` or `border-white/12`). Forbid drop shadows and blurred glass.<br>**The Ledger System:** Replace floating 3-column card grids with horizontal archival ledger rows.<br>**Monolithic Contrast:** Pure `#FFFFFF` sections crash directly into pitch-black `#000000` / `#080808` sections.<br>**Strict Color Law:** Subtitles and paragraphs MUST NEVER be blue/cyan/purple. Subtitles are strictly neutral (`text-zinc-400` / `text-zinc-600`).<br>**Media:** Rigid aspect ratios (`aspect-[3/4]`, `aspect-[4/5]`, `aspect-[16/9]`), `object-cover`, chiaroscuro/desaturated lighting. |
-| **4. Delivery** | Build in complete, cohesive chunks. | Start with Navbar + Hero stage. Pause for user review. |
-| **5. Review** | Mandatory diff check before reporting done. | Verify syntax, closed tags, imports, accessibility, and zero deletions. |
+**Editorial index:** `[ 01 ] | Work / Capability | Year / Discipline | →`.
 
----
+**Image strip:** a horizontal sequence of rectangular images with terse captions and explicit previous/next controls.
 
-## Pillar 1 — Memory
+**Process line:** numbered stages on a shared rule or staggered columns; no isolated boxes.
 
-Chat sessions get lost, truncated, or restarted. The `context.md` file in the project root preserves state across sessions and across model switches.
+## Type, Color, and Content
 
-1. **Session start:** Check if `context.md` exists. If it does, read it before doing anything else.
-2. **Persist decisions:** After the user answers onboarding questions or a feature milestone is completed, update `context.md` with the project vision, design tokens, completed chunks, and next milestones.
+- Display: Space Grotesk, Helvetica Neue, Arial, or another neutral grotesque. Use `clamp(4rem, 12vw, 10rem)`, tight tracking from `-0.04em` to `-0.07em`, and line-height around `0.88–0.95`.
+- Body: a plain sans-serif with short measure and calm leading.
+- Utility: mono or condensed sans, 9–11px, uppercase, tracking `0.14em–0.24em`.
+- Headings: 1–6 words. Subtitles: one sentence, preferably under 15 words. If copy competes with the image, delete it.
+- Base surfaces: `#000000`, `#080808`, `#171717`, `#F5F2EA`, and `#FFFFFF`.
+- Image accents: vermilion/red/orange are allowed when the composition calls for them. Avoid blue, cyan, purple, and multi-accent palettes.
+- Do not invent fake statistics or technical coordinates merely to make a layout look designed.
 
-*Reference: [context-protocol.md](./references/context-protocol.md)*
+## Interaction and Motion
 
----
+Interactions should reveal or move existing editorial content, not add UI noise. Use linear motion only: `cubic-bezier(0.16, 1, 0.3, 1)`, short fades, masked title reveals, image crop shifts, horizontal gallery movement, and restrained hover rules. Never use bouncy springs, magnetic gimmicks, cursor bubbles, decorative parallax, or perpetual marquees unless the composition clearly needs them.
 
-## Pillar 2 — Onboarding
+Every control must work. Use real state for menus, galleries, tabs, filters, forms, and dialogs. Controls remain rectangular, with a clear text label where possible. Respect `prefers-reduced-motion`; reduced motion becomes opacity or no animation.
 
-Before building any new frontend page or component from an underspecified prompt, ask 3–4 structured, plain-English questions:
+## Accessibility
 
-1. **Visual Theme** — Pitch-black brutalist luxury (`#000000` / `#080808`, recommended for tech/aerospace/fashion), warm editorial portfolio (`#faf9f5` with hairline grids), or high-contrast monolithic two-tone.
-2. **Hero Message & Primary Action** — The main colossal headline and the primary action trigger.
-3. **Information Density** — Curatorial catalog index (recommended) or dense architectural matrix.
-4. **Pacing** — Confirm starting with navbar + hero stage, then iterating.
+Maintain WCAG 2.1 AA contrast, semantic landmarks, keyboard operation, visible square focus indicators, `aria-label` for icon-only controls, and `aria-expanded`/`aria-controls` for disclosure. Focus indicators may use a 2px solid black/white or vermilion outline with an offset.
 
-**Skip this step** when:
-- The user already specified theme, colors, or component requirements.
-- The task is an edit, modification, or bug fix on existing code.
+## Workflow
 
-**For portfolios / personal sites / case studies:** use the specialized 4-question portfolio set (portfolio type → design mode → work layout → sections) in [questioning-framework.md](./references/questioning-framework.md), and read [framer-portfolio-blueprints.md](./references/framer-portfolio-blueprints.md) first.
+1. Read `context.md` before taking action.
+2. If a new UI is underspecified, ask the visual theme, primary action, density, and pacing questions. Skip questions when the user supplied visual direction or is editing existing UI.
+3. Read the relevant internal guidance document for frontend, portfolio, motion, layout, forms, or accessibility work.
+4. Translate this visual grammar directly into the requested interface.
+5. Build a complete cohesive chunk: navigation + hero, an index section, or a full requested page.
+6. After every edit, inspect the diff and run available validation. Verify syntax, imports, accessibility, and that no generic pattern slipped in.
+7. Update `context.md` when visual decisions or milestones change.
 
-*Reference: [questioning-framework.md](./references/questioning-framework.md)*
+## Fast Pre-Ship Gate
 
----
-
-## Pillar 3 — Design System (Swiss Architectural Editorial & Brutalist Luxury)
-
-### 3.1 Theme Defaults & Monolithic Contrast
-
-- **Rejection of SaaS Patterns:** Reject generic software UI patterns: no floating rounded cards, no soft drop shadows, no colorful gradient buttons, no pastel blobs. Treat the browser as a printed architectural blueprint and high-fashion luxury catalog (inspired by Vogue, 032c, Kinfolk, Kanso, Akihiko).
-- **Monolithic Inversion:** Rely on stark, dramatic contrast. Clean white expanses crash directly into pitch-black monolith sections (`#000000` or `#080808`) separated by a razor-sharp dead-straight horizontal line.
-- **Hairline Architectural Gridlines:** Use visible structural 1px dividers (`border-neutral-200` on light, `border-white/12` on dark) mapping every axis.
-- **Strict Color Law for Copy:** Subtitles and paragraphs MUST NEVER be colored blue, cyan, green, or purple. Subtitles must strictly be neutral (`text-zinc-400` on dark, `text-zinc-600` on light). Accent colors (e.g. warm vermilion, cobalt) are strictly reserved for micro-status indicators.
-
-### 3.2 Low Text, High Fidelity (The Anti-Clutter Law)
-
-- **Cut 70% of Copy:** Never generate text-heavy websites or walls of paragraphs. Keep copy razor-sharp.
-- **Headings:** 3–6 words maximum. Punchy, monumental, authoritative (e.g. `VELOCITY IN HARMONY®`, `SUPERSONIC FLIGHT`).
-- **Subtitles:** 1 single sentence maximum (under 15 words). Strictly forbid multiple descriptive paragraphs in hero and marketing sections.
-- **Zero Telemetry Clutter:** Do NOT spam the layout with endless status tags, timestamps, coordinates, or fake telemetry chips. Treat the website like a high-fashion editorial book or luxury brand flagship (Kinfolk, Leica, Céline), NOT an airplane cockpit or terminal log.
-- **Visual & Media Dominance:** High visual fidelity wins. Let colossal scale, generous negative space (padding `py-28` to `py-36`), razor-sharp 1px hairlines, and high-contrast cinematic imagery command attention.
-
-### 3.3 Typographic Tension (The 10:1 Scale Polarity)
-
-- **The Colossal Heading:** Set primary headings between 80px and 140px (`text-6xl` to `text-9xl`), ultra-tight negative letter-spacing (`tracking-[-0.04em]` to `tracking-[-0.06em]`), compressed line-height (`leading-[0.9]` to `leading-[0.95]`). Fonts: Space Grotesk, PP Neue Montreal, Syne, or Helvetica Neue.
-- **The Microscopic Precision:** Utility labels, metadata, dates, and categories set between 9px and 11px (`text-[10px]` to `text-xs`), uppercase, monospace or sans, wide letter-spacing (`tracking-[0.15em]` to `tracking-[0.25em]`).
-- **Surgical Editorial Artifacts:**
-  - Trademark & registry markers: `®`, `™`, `©` attached to primary headings and brand marks.
-  - Bracketed index numerals: `[ 01 ]`, `[ 02 ]`, `[ VOL. IV ]`.
-  - Max 1 or 2 surgical tags per section. Never overwhelm the canvas.
-
-### 3.4 Zero Radius (The Anti-Card Law)
-
-- **Strict Zero Radius:** `border-radius: 0` (`rounded-none`) across all elements, buttons, input fields, tags, and image containers.
-- **Prohibited:** Rounded pill shapes (`rounded-full`), soft bubble cards (`rounded-2xl`), floating drop shadows (`shadow-xl`), and blurred glassmorphism.
-
-### 3.5 Navbar & Hero Stage
-
-**Navbar:**
-- Full-bleed 1px hairline bottom border (`border-b border-white/12` or `border-neutral-200`).
-- No pill buttons. Use sharp rectangular buttons (`rounded-none px-5 py-2.5 text-xs font-mono tracking-widest uppercase`).
-- Minimal text navigation in small caps/uppercase with micro-index tags.
-
-**Hero Stage:**
-- Full-bleed edge-to-edge: `w-full min-h-[100dvh]` with generous vertical padding (`py-24` to `py-36`).
-- Colossal headline paired with microscopic archival tags (`[ 01 ]`, `EST. 2026`, `®`).
-- Media centerpiece must use locked aspect ratios (`aspect-[16/9]`, `aspect-[4/5]`, `aspect-[3/4]`), `object-cover`, `rounded-none`, and hairline 1px border.
-
-### 3.6 The Ledger System (Replacing the "Card UI")
-
-Ordinary websites use floating cards. High-end editorial sites format capabilities and services as **horizontal ledger rows** (like an archival auction catalog or technical invoice):
-
-```tsx
-// Compliant Horizontal Ledger Row
-<div className="w-full border-t border-neutral-200 dark:border-white/12 py-6 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors rounded-none">
-  <div className="flex items-center gap-6">
-    <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500">[ 01 ]</span>
-    <h3 className="text-xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
-      Supersonic Shockwave Dispersion™
-    </h3>
-  </div>
-  <div className="flex items-center gap-8">
-    <span className="text-xs font-mono tracking-wider text-zinc-400">MACH 2.2 COHESION</span>
-    <span className="text-sm font-mono text-zinc-500 group-hover:translate-x-1 transition-transform">→</span>
-  </div>
-</div>
-```
-
-### 3.7 Media & Photographic Art Direction
-
-- **Rigid Aspect Ratios:** All visual media must enforce locked ratios (`aspect-[3/4]`, `aspect-[4/5]`, `aspect-[16/9]`).
-- **Styling:** `rounded-none`, `object-cover`, with subtle 1px hairline framing.
-- **Lighting & Tone:** Chiaroscuro lighting, architectural concrete, high contrast, subtle film grain, or muted desaturated tones. Strictly no stock cartoon illustrations or floating 3D icons.
-
-### 3.8 Asymmetric 12-Column Architectural Grids
-
-Structure pages using 12-column architectural splits rather than symmetric 3-box rows:
-- Example: 5-column editorial sticky index on the left, 7-column media catalogue on the right.
-- Separated by crisp vertical and horizontal hairline borders (`border-r`, `border-l`, `border-t`, `border-b`).
-
-### 3.9 Interactivity & State UX
-
-All interactive controls must feature working client-side state:
-- Zero-radius buttons (`rounded-none px-6 py-3 font-mono text-xs uppercase tracking-widest bg-black text-white hover:bg-zinc-800 dark:bg-white dark:text-black`).
-- Tab switchers, drawer toggles, and modal dossiers with instant responsive state.
-- WCAG 2.1 AA conformance: visible square focus rings (`focus-visible:ring-2 focus-visible:ring-offset-2`), 4.5:1 text contrast minimum, `motion-reduce` support.
-
-### 3.10 Motion (Framer Motion Inlined Blueprints)
-
-Use Framer Motion (`framer-motion` or `motion/react`) in React/Next.js. In vanilla stacks, use CSS with `cubic-bezier(0.16, 1, 0.3, 1)`. Motion is structural, cinematic, and linear—NEVER bouncy, springy, or playful.
-
-**1. Architectural Text Reveal (Headings & Display):**
-```tsx
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
->
-  <h1 className="text-7xl md:text-9xl font-light tracking-[-0.05em] leading-[0.9] text-white">
-    SUPERSONIC<span className="text-xs align-super font-mono text-zinc-500">®</span>
-  </h1>
-</motion.div>
-```
-
-**2. Staggered Ledger Rows:**
-```tsx
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } }
-};
-const rowVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
-};
-
-<motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
-  {items.map((item, idx) => (
-    <motion.div key={idx} variants={rowVariants} className="w-full border-b border-white/10 py-5 flex items-center justify-between group hover:bg-white/[0.02] rounded-none">
-      <span className="font-mono text-[10px] text-zinc-500 tracking-[0.2em]">[ 0{idx + 1} ]</span>
-      <h4 className="text-xl text-white font-normal">{item.title}</h4>
-      <span className="font-mono text-xs text-zinc-400 group-hover:translate-x-1 transition-transform">→</span>
-    </motion.div>
-  ))}
-</motion.div>
-```
-
-**3. Rolling Text Link (`RollText`):**
-```tsx
-function RollText({ text }: { text: string }) {
-  return (
-    <span className="relative inline-block overflow-hidden h-[1.2em] font-mono text-xs uppercase tracking-widest group">
-      <span className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{text}</span>
-      <span className="absolute top-full left-0 inline-block transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full text-zinc-400">{text}</span>
-    </span>
-  );
-}
-```
-
-### 3.11 Tailwind CSS & Design Tokens
-
-Primary styling engine. Strictly enforce zero-radius and architectural hairlines:
-
-**v4 (CSS-first):**
-```css
-@import "tailwindcss";
-
-@theme {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-mono: "Space Mono", monospace;
-  --color-monolith: #080808;
-  --color-paper: #ffffff;
-  --radius: 0px;
-}
-```
-
-**v3 (config-first):** Map fonts, colors, and zero radius under `theme.extend` in `tailwind.config.ts`.
-
-**Canonical utility patterns:**
-- Full-bleed hero: `w-full min-h-[100dvh] relative bg-[#080808] pt-32 pb-24 border-b border-white/10`
-- Architectural container: `w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
-- Button: `rounded-none bg-white text-black px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-neutral-200 transition-colors`
-- Ledger row: `w-full border-t border-white/12 py-6 px-4 flex items-center justify-between group hover:bg-white/[0.02] rounded-none`
-- Archival spec tag: `text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-400`
-
-### 3.12 Advanced Interactions
-
-- **Rolling links (`RollText`):** Dual-text stack with vertical roll on hover. Duration `300ms`, easing `cubic-bezier(0.65, 0, 0.35, 1)`.
-- **Sticky card stacking:** Dynamic offset `top: ${70 + index * 32}px`. Preceding cards scale to `0.94` and dim to `brightness(0.55)`. Disabled on mobile (`<768px`).
-- **Fluid button fills:** Dual-wave SVG fill rising from bottom on hover.
-- **Magnetic cursor:** Desktop only. Disabled below `768px` and when `prefers-reduced-motion` is active.
-
-### 3.13 Accessibility & Semantics (WCAG 2.1 AA)
-
-- **Contrast compliance:** Maintain 4.5:1 minimum for body text, 3:1 for large display titles and borders. Secondary metadata must use `text-zinc-400` minimum on obsidian dark surfaces—never faint zinc (`text-zinc-600`).
-- **Focus visibility:** Every clickable control must have an explicit focus indicator: `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2`.
-- **Keyboard navigation:** Full tab sequence support, skip-to-content links, trapped focus inside open dialogs/modals.
-- **Screen reader labels:** All icon-only buttons require explicit `aria-label` tags. Collapsibles require `aria-expanded`.
-- **Motion reduction:** Wrap Framer Motion animations with `useReducedMotion()` and use Tailwind `motion-reduce:transition-none`.
-
-### 3.14 Form & State UX
-
-- **Explicit labels:** Pair all inputs with `<label>`. Do not use placeholder attributes as labels.
-- **Validation feedback:** Inline errors with `role="alert"`, `aria-invalid={true}`, and `aria-describedby`.
-- **Loading states:** Use geometric skeleton pulse loaders that match layout geometry rather than generic circular spinners.
-- **Empty states:** Provide informative placeholders with bracketed tags (`[ NO ENTRIES ]`) and a clear primary action button.
-
-*References: [DESIGN.md](./DESIGN.md) · [accessibility-standards.md](./references/accessibility-standards.md) · [form-and-feedback-ux.md](./references/form-and-feedback-ux.md) · [framer-design-system.md](./references/framer-design-system.md) · [premium-section-benchmarks.md](./references/premium-section-benchmarks.md) · [framer-portfolio-blueprints.md](./references/framer-portfolio-blueprints.md)*
-
----
-
-## Pillar 4 — Incremental Delivery
-
-1. **Deliver in cohesive chunks.** A chunk is a complete milestone: navbar + hero stage, or a full features section with bento grid. Never stop after trivial fragments.
-2. **Handle full-page requests.** If the user asks for a complete page, build the full architecture cleanly — do not stop prematurely.
-3. **Review after each chunk.** Run the post-edit review, verify, then pause.
-4. **Check in with the user.** Let them inspect the result before continuing to the next section.
-
----
-
-## Pillar 5 — Post-Edit Review
-
-After creating or modifying any file, run this check before reporting completion:
-
-1. **Imports & syntax:** All used functions, styles, and packages imported. All tags, brackets, and quotes closed.
-2. **Caller integrity:** Modifying a component's props didn't break existing callers.
-3. **Accessibility verification:** Focus rings present, contrast ratio met, icon buttons have `aria-label`, motion-reduction respected.
-4. **No deletions:** The edit didn't accidentally remove existing features, styles, or utilities.
-5. **Verification:** Run available tests, linters, or check terminal output. Zero errors.
-
-*Reference: [post-edit-review-checklist.md](./references/post-edit-review-checklist.md)*
-
----
-
-## Standard Execution Sequence
-
-1. Check `context.md` — load existing project state.
-2. Ask onboarding questions — if starting new UI without specs.
-3. Persist to `context.md` — record decisions.
-4. Build — apply design system rules, deliver as a cohesive chunk.
-5. Post-edit review — verify zero breakage.
-6. Report and pause — present summary, check in before next chunk.
+- [ ] Hard-edged rectangular composition throughout.
+- [ ] No cards, bento, shadows, glass, pills, gradients, or generic SaaS structure.
+- [ ] One dominant image/type idea per section.
+- [ ] Hairline grid structure is visible where useful.
+- [ ] Copy is short and neutral; metadata is sparse.
+- [ ] Media is real, high-fidelity, locked-ratio, and rectangular.
+- [ ] Interactions work, focus is visible, and reduced motion is respected.
+- [ ] Diff, tests, lint, or the smallest available smoke check pass.

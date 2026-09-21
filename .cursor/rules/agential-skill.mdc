@@ -1,31 +1,17 @@
 ---
-description: Universal Swiss editorial web & UI development rules with context.md memory by Talha Irfan (@talhairfandev)
-globs: *
+description: Self-contained minimal editorial UI rules with hard-edged geometry
+globs: "*"
 alwaysApply: true
 ---
 
 # Agential Skill — Cursor Rules
-**Author:** Talha Irfan ([@talhairfandev](https://github.com/talhairfandev))
 
-Follow these five rules on every request:
-
-1. **Memory (`context.md`):** Check for `context.md` at project root. Load existing context and past design decisions. Update it when milestones or tokens are agreed upon or completed.
-2. **Onboarding Questions:** When starting new UI without design specs, ask 3–4 plain-English questions: visual theme, hero CTA, information density, pacing. Skip this step if specs are already provided or when editing existing code.
-3. **Design System:**
-   - **Framer-Level Baseline (universal):** Treat EVERY frontend build as a Framer-level website — confident oversized type, massive whitespace, smooth scroll-driven motion (`ease [0.22,1,0.36,1]` / `[0.16,1,0.3,1]`, never bouncy), high-fidelity media, low copy, refined interactions, cohesive tokens. NEVER ship ordinary, cluttered, or template-grade UI: one focal point per section, generous negative space. Data-dense app UIs use the Refined App Standard (restrained scale, subtle motion) under the same no-clutter law. Read `references/framer-baseline-rules.md`.
-   - **Surfaces:** Solid high-contrast surfaces (obsidian `#0a0a0c`, slate `#0b0f17`, pure white `#ffffff`). Strictly no rainbow gradients. Single-color monochromatic glows are permitted. Respect tokens in `DESIGN.md`.
-   - **Typography:** Space Grotesk (display/titles), Plus Jakarta Sans (body), Manrope, Inter. Bracketed uppercase micro-labels (`[ OUR PROCESS ]`, `tracking-[0.25em]`).
-   - **Zero Radius & Ledger System:** `border-radius: 0` (`rounded-none`) across all elements, buttons, and media. Absolutely NO rounded cards or pill buttons. Replace 3-column floating card grids with horizontal archival ledger rows (`[ 01 ] | Title | Spec | →`) with 1px hairline dividers.
-   - **Low Text, High Fidelity (Anti-Clutter):** Cut 70% of copy. Headings 3–6 words, subtitles 1 sentence (under 15 words). NO text walls or paragraph clutter. Do NOT clutter with fake telemetry/coordinates. Let breathing room, colossal scale, and high-fidelity media command the page.
-   - **10:1 Typographic Tension:** Pair colossal headings (80px–140px, `tracking-[-0.04em]`, `leading-[0.9]`) with microscopic utility labels (10px–11px, `tracking-[0.15em]`, uppercase/mono).
-   - **Surgical Artifacts:** Subtle `®`, `™`, or `[ 01 ]`. Max 1–2 per section. Never overwhelm the canvas.
-   - **Strict Color Law:** Subtitles and paragraphs MUST NEVER be blue/cyan/purple. Subtitles are strictly neutral (`text-zinc-400` on dark, `text-zinc-600` on light).
-   - **Monolithic Contrast:** Pure `#FFFFFF` sections crashing directly into pitch-black `#080808` sections.
-   - **Layout:** Full-bleed sections (`w-full min-h-[100dvh]`). Centered architectural container (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`).
-   - **Section Architecture:** Distinct storytelling stages with signature centerpiece mockups. Desktop `100–140vh` min-height for sticky reveals; fluid mobile (`100dvh`/`auto`).
-   - **Interactivity & State UX:** Working client-side state for all controls (tabs, filters, modals, copy triggers). Visible square focus rings, WCAG 2.1 AA (4.5:1 contrast).
-   - **Motion (Framer Motion):** Linear architectural reveals (`initial={{ opacity: 0, y: 20 }}`, `animate={{ opacity: 1, y: 0 }}`, `ease: [0.16, 1, 0.3, 1]`), staggered ledger entry (`staggerChildren: 0.08`), and rolling text (`RollText`). Never bouncy.
-   - **Mandatory Pre-Flight Read:** Before generating code, you MUST inspect `references/framer-design-system.md` and `references/premium-section-benchmarks.md`. For portfolios, personal sites, or case studies, you MUST first read `references/framer-portfolio-blueprints.md` and pick a design mode (A: Brutalist Editorial — zero-radius; or B: Soft Premium — warm cream tones, rounded media). In a portfolio context, project thumbnail grids are allowed and expected; the zero-radius/Ledger law applies to Mode A only.
-   - **Styling:** Tailwind CSS (v4 `@theme` with `--radius: 0px` or v3 config).
-4. **Incremental Delivery:** Deliver in complete, cohesive chunks (navbar + hero first). Check in before subsequent sections.
-5. **Post-Edit Review:** After modifying any file, inspect the diff to verify imports, syntax, closing tags, caller integrity, and accessibility conformance before reporting done.
+1. Read `context.md` before acting and update it after visual decisions or milestones.
+2. For an underspecified new UI ask theme, primary action, density, and pacing. Skip for edits or supplied visual direction.
+3. Before frontend work read the relevant internal baseline guidance.
+4. Build editorial UI: full-bleed image planes, oversized grotesque type, visible 1px grids, sparse utility labels, short copy, and hard black/white sections with selective red/orange imagery.
+5. Use hard-edged rectangular geometry for every surface and control. Avoid soft corners, pills, capsules, circles, and ornamental shapes.
+6. Never produce floating cards, bento, equal rows, glass, blur, shadows, gradients, icon boxes, or generic dashboard widgets. Use split stages, image/title plates, wireframe matrices, image strips, and ledger rows.
+7. Keep one focal point per section, neutral body copy, 1–6 word headings, sparse metadata, and locked rectangular media ratios.
+8. Use real state, semantic accessibility, WCAG AA contrast, square focus outlines, and restrained linear motion with reduced-motion support.
+9. Deliver cohesive chunks. Inspect every diff and run available validation before completion.

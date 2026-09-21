@@ -1,16 +1,15 @@
-# Preset: Vue & Nuxt UI Craftsmanship
+# Preset: Vue and Nuxt — Editorial Implementation
 
-Specialized guidelines for Vue 3 Composition API and Nuxt 3.
+- Use Vue 3 Composition API and Nuxt 3 conventions.
+- Use `shallowRef()` for large collections when deep reactivity is unnecessary.
+- Use `defineAsyncComponent()` for dialogs and heavy interactive modules.
+- Keep computed getters pure.
+- Keep interaction state real and local where possible; preserve keyboard semantics.
 
----
+## Visual implementation
 
-## 1. Reactivity Tuning with shallowRef
-- Use `shallowRef()` or `shallowReactive()` for large arrays or objects when deep reactivity is not required to avoid unnecessary proxy overhead.
+Follow the canonical editorial system in `SKILL.md` and `DESIGN.md`: full-bleed image/title planes, oversized grotesque type, visible 1px rules, editorial index rows, and concise copy.
 
-## 2. Component Caching & Lazy Loading
-- Use `<KeepAlive>` for expensive dynamic tabs or view routers to preserve DOM state without rebuilding components.
-- Use `defineAsyncComponent()` for dialogs, modals, and heavy widgets so they only load when triggered.
+Use hard-edged rectangular geometry throughout. Avoid soft corners, pills, capsules, circles, shadows, blur, glass, gradients, cards, bento, and generic widget grids. Use sharp rectangular media with `object-fit: cover` and `aspect-ratio: 3 / 4`, `4 / 5`, or `16 / 9`. Use solid black, white, charcoal, cream, and selective red/orange. Body copy stays neutral.
 
-## 3. Computed Property Purity
-- Keep `computed()` getters pure without side effects.
-- Avoid modifying reactive state inside computed properties or watchers.
+Use semantic HTML, explicit labels, real client-side state, square focus outlines, WCAG AA contrast, and reduced-motion-safe linear transitions.

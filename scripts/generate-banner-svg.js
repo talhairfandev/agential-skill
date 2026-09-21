@@ -57,13 +57,13 @@ function generateSvg() {
   svgLines.push('  <circle cx="24" cy="20" r="5" fill="#ef4444" opacity="0.8"/>');
   svgLines.push('  <circle cx="40" cy="20" r="5" fill="#f59e0b" opacity="0.8"/>');
   svgLines.push('  <circle cx="56" cy="20" r="5" fill="#10b981" opacity="0.8"/>');
-  svgLines.push('  <text x="74" y="24" fill="#71717a" font-family="ui-monospace, Consolas, monospace" font-size="11px">agential-skill — v1.0.2</text>');
+  svgLines.push('  <text x="74" y="24" fill="#71717a" font-family="ui-monospace, Consolas, monospace" font-size="11px">agential-skill — v1.0.3</text>');
   svgLines.push('  <line x1="0" y1="36" x2="760" y2="36" stroke="#18181b" stroke-width="1"/>');
   svgLines.push('  ');
   svgLines.push('  <g font-family="Consolas, ui-monospace, monospace" font-size="13px" font-weight="normal" xml:space="preserve">');
 
   // Top Box
-  const top1 = ' ┌─ ● Welcome to Agential Skill (v1.0.2) ────────────────────────────────┐';
+  const top1 = ' ┌─ ● Welcome to Agential Skill (v1.0.3) ────────────────────────────────┐';
   const top2 = ' │  Autonomous Frontend Architecture & Design Engine                     │';
   const top3 = ' └───────────────────────────────────────────────────────────────────────┘';
 
@@ -118,7 +118,7 @@ function generateSvg() {
   svgLines.push(renderGridLine(foot1, y, '#3f3f46'));
 
   y += 18;
-  const foot2 = '  Version: v1.0.2  │  Supports: Claude Code · Google Antigravity · VS Code';
+  const foot2 = '  Version: v1.0.3  │  Supports: Claude Code · Google Antigravity · VS Code';
   let foot2Spans = '';
   for (let col = 0; col < foot2.length; col++) {
     const ch = foot2[col];

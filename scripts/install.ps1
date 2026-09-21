@@ -60,7 +60,6 @@ if ($TargetType -eq "all" -or $TargetType -eq "antigravity") {
     New-Item -ItemType Directory -Force -Path $DestSkill | Out-Null
     Copy-Item (Join-Path $SourceRoot "SKILL.md") -Destination $DestSkill -Force
     Copy-RecursiveSafe (Join-Path $SourceRoot "references") (Join-Path $DestSkill "references")
-    Copy-RecursiveSafe (Join-Path $SourceRoot "resources") (Join-Path $DestSkill "resources")
 
     $DestRules = Join-Path $TargetDir ".agents\rules"
     New-Item -ItemType Directory -Force -Path $DestRules | Out-Null

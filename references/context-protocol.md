@@ -1,55 +1,22 @@
-# Session Memory Protocol (`context.md`)
+# Session Memory Protocol
 
-A specification for preserving project context, design decisions, and architectural state across AI chat sessions.
+`context.md` is the source of truth across sessions.
 
----
+1. Read it before any action.
+2. After a user confirms visual direction, record the decision.
+3. After a completed chunk, record it under Completed and list the next milestone.
 
-## Why
-
-Chat sessions suffer from context loss, token truncation, and restarts. When a developer starts a new session or switches models (Claude → Gemini → GPT), they should never re-explain their project from scratch.
-
-The `context.md` file in the project root is the single source of truth for any AI agent.
-
----
-
-## Lifecycle
-
-1. **Session start.** Before asking questions or taking action, check if `context.md` exists. If it does, read it immediately.
-2. **Post-onboarding.** After the user answers the kickoff questions, create or update `context.md` with their decisions.
-3. **Post-delivery.** When a feature chunk is completed, record it under "Completed" and list what comes next.
-
----
-
-## Structure
+## Design Decision Template
 
 ```markdown
-# Project Context: [Project Name]
-*Last Updated: [Date]*
-
-## 1. Vision
-- **Purpose**: [What this app does]
-- **Audience**: [Who uses it]
-- **Primary Goal**: [Conversion, productivity, dashboard, etc.]
-
 ## 2. Design Decisions
-- **Color**: [e.g. Obsidian dark (#0a0a0c) with blue accent (#3b82f6)]
-- **Gradients**: None (solid colors only)
-- **Typography**: [e.g. Space Grotesk (display) + Plus Jakarta Sans (body)]
-- **Border Radius**: [Buttons: 6–8px, Cards: 8–12px, Tags: 4px]
-- **Density**: [Spacious / Compact]
-
-## 3. Tech Stack
-- **Framework**: [Vanilla, Next.js, Vue, etc.]
-- **Key Files**: [src/... or index.html]
-
-## 4. Completed
-- [x] [e.g. Sticky navbar + hero with 6px CTA]
-- [x] [e.g. Tabbed agenda with DocumentFragment rendering]
-
-## 5. Next
-- [ ] [e.g. Pricing cards]
-- [ ] [e.g. Contact form]
-
-## 6. Notes
-- [Any specific user preferences]
+- **Visual direction**: self-contained minimal editorial output
+- **Composition**: [image/title plate, split stage, wireframe matrix, image strip, or editorial index]
+- **Color**: [black, white, charcoal, cream, selective red/orange]
+- **Typography**: [neutral grotesque display + plain sans body + mono utility]
+- **Geometry**: hard-edged rectangular framing with visible 1px rules
+- **Density**: [minimal, image-led, sparse metadata]
+- **Forbidden patterns**: [cards, bento, shadows, glass, gradients, generic SaaS]
 ```
+
+Keep completed milestones factual and short. Preserve the embedded visual convention when updating this file.

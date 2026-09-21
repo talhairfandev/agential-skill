@@ -1,6 +1,6 @@
 {
   "name": "agential-skill",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The user-first web & UI development skill for any AI agent (Antigravity, Cursor, Copilot, Claude, ChatGPT).",
   "main": "bin/cli.js",
   "bin": {
@@ -41,7 +41,6 @@
     ".cursor",
     "presets",
     "references",
-    "resources",
     "scripts"
   ],
   "scripts": {

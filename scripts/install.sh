@@ -45,10 +45,6 @@ if [ "$TARGET_TYPE" = "all" ] || [ "$TARGET_TYPE" = "antigravity" ]; then
   if [ -d "$SOURCE_ROOT/references" ]; then
     cp -r "$SOURCE_ROOT/references" "$DEST_SKILL/"
   fi
-  if [ -d "$SOURCE_ROOT/resources" ]; then
-    cp -r "$SOURCE_ROOT/resources" "$DEST_SKILL/"
-  fi
-
   DEST_RULES="$TARGET_DIR/.agents/rules"
   mkdir -p "$DEST_RULES"
   cp "$SOURCE_ROOT/AGENTS.md" "$DEST_RULES/agential-skill.md"

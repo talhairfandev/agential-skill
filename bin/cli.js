@@ -105,9 +105,6 @@ function installSkill(targetDir, targets = ['all']) {
     if (fs.existsSync(path.join(ROOT_DIR, 'references'))) {
       copyRecursiveSync(path.join(ROOT_DIR, 'references'), path.join(destSkill, 'references'));
     }
-    if (fs.existsSync(path.join(ROOT_DIR, 'resources'))) {
-      copyRecursiveSync(path.join(ROOT_DIR, 'resources'), path.join(destSkill, 'resources'));
-    }
     results.push(`Google Antigravity Skill -> ${path.relative(targetDir, destSkill)}`);
 
     // Also install active rule so Antigravity ALWAYS uses it without being told
