@@ -94,4 +94,6 @@ agential-skill/
 
 ## Author and License
 
-Created by **Talha Irfan** ([@talhairfandev](https://github.com/talhairfandev)). Licensed under [MIT](./LICENSE).
+
+Created by **Talha Irfan** ([@talhairfandev](https://talhairfandev.me)). Licensed under [MIT](./LICENSE).
+
